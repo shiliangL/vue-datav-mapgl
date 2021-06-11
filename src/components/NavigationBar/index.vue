@@ -1,20 +1,40 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-11 09:32:18
- * @LastEditTime: 2021-06-11 10:33:11
+ * @LastEditTime: 2021-06-11 13:58:19
  * @LastEditors: Do not edit
  * @Description:
 -->
 <template>
   <div class="NavigationBar">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <div class="NavigationBar-inner">
+      <div
+        class="NavigationBar-item"
+        v-for="(item,index) in navigationList"
+        :key="index"
+      >
+        <router-link
+          :to="item.url"
+          v-text="item.text"
+        > </router-link>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'NavigationBar',
+  data() {
+    return {
+      navigationList: [
+        { text: '人员预警', url: '/thePeopleWarning' },
+        { text: '车辆预警', url: '/theVehicleWarning' },
+        { text: '综合监控', url: '/safetyWarning' },
+        { text: '安全预警', url: '/earlyWarning' },
+      ],
+    };
+  },
 };
 </script>
 
@@ -23,10 +43,15 @@ export default {
   left: 0;
   bottom: 0;
   z-index: 2;
+  width: 50%;
+  padding: 4px;
   position: fixed;
-  width: 60%;
-  background: #2B5296;
-      background: rgba(46,91,162,0.33);
-  transform: translate(-50%, 0%);
+  transform: translate(50%, 0%);
+  background: rgba(46, 91, 162, 0.33);
+  .NavigationBar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
 }
 </style>

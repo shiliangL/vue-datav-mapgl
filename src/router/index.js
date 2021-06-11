@@ -1,7 +1,7 @@
 /*
  * @Author: shiliangL
  * @Date: 2021-06-09 13:39:57
- * @LastEditTime: 2021-06-11 09:20:44
+ * @LastEditTime: 2021-06-11 13:57:36
  * @LastEditors: Do not edit
  * @Description:
  */
@@ -18,9 +18,24 @@ const routes = [
     component: Home,
     children: [
       {
-        path: '/about',
-        name: 'About',
-        component: () => import('../views/About.vue'),
+        path: 'theVehicleWarning',
+        name: 'TheVehicleWarning',
+        component: () => import('../views/TheVehicleWarning/index.vue'),
+      },
+      {
+        path: 'thePeopleWarning',
+        name: 'ThePeopleWarning',
+        component: () => import('../views/ThePeopleWarning/index.vue'),
+      },
+      {
+        path: 'safetyWarning',
+        name: 'SafetyWarning',
+        component: () => import('../views/SafetyWarning/index.vue'),
+      },
+      {
+        path: 'earlyWarning',
+        name: 'EarlyWarning',
+        component: () => import('../views/EarlyWarning/index.vue'),
       },
     ],
   },

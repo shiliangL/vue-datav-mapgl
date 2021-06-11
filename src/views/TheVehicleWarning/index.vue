@@ -1,27 +1,27 @@
 <!--
  * @Author: shiliangL
- * @Date: 2021-06-09 13:39:57
- * @LastEditTime: 2021-06-11 10:26:59
+ * @Date: 2021-06-11 13:45:53
+ * @LastEditTime: 2021-06-11 14:01:44
  * @LastEditors: Do not edit
- * @Description:
+ * @Description: 车辆安全预警监控
 -->
 <template>
   <div class="page-content">
     <MapSiderBar placement="left">
-      <TitleBar></TitleBar>
+      <TitleBar title="车辆安全预警监控" />
     </MapSiderBar>
     <MapSiderBar placement="right">
-      <TitleBar></TitleBar>
+      <TitleBar title="车辆安全预警监控" />
     </MapSiderBar>
   </div>
 </template>
 
 <script>
-
 // eslint-disable-next-line import/named
-import components from '../components/index';
+import components from '@/components/index';
 
 export default {
+  name: 'TheVehicleWarning',
   components: {
     TitleBar: components.TitleBar,
     MapSiderBar: components.MapSiderBar,
@@ -30,5 +30,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 </style>

@@ -1,18 +1,21 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-09 13:39:57
- * @LastEditTime: 2021-06-11 10:29:28
+ * @LastEditTime: 2021-06-11 14:27:57
  * @LastEditors: Do not edit
  * @Description:
 -->
 <template>
   <div class="layout">
-    <div class="header">
-      <h1 class="header-title">智慧云平台</h1>
-    </div>
+    <header-bar />
     <div id="home" />
-    <navigation-bar> </navigation-bar>
-    <router-view />
+    <navigation-bar />
+    <transition
+      enter-active-class="animate__animated animate__fadeInLeft"
+      leave-active-class="animate__animated animate__fadeInRight"
+    >
+      <router-view />
+    </transition>
   </div>
 </template>
 
@@ -26,6 +29,7 @@ const { BMapGL } = window;
 export default {
   name: 'Home',
   components: {
+    HeaderBar: components.HeaderBar,
     NavigationBar: components.NavigationBar,
   },
   mounted() {
@@ -90,24 +94,6 @@ export default {
   overflow: hidden;
   position: relative;
   background: #060b14;
-  .header {
-    z-index: 2;
-    position: relative;
-    height: 40px;
-    line-height: 40px;
-    box-sizing: border-box;
-    background: url("~@/assets/imgs/header_bar.png") no-repeat;
-    background-size: 100% 100%;
-    box-sizing: border-box;
-  }
-  .header-title {
-    color: #f6fafc;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    font-size: 24px;
-    font-weight: 400;
-  }
   #home {
     left: 0;
     top: 0;

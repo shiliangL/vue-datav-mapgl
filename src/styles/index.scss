@@ -1,3 +1,5 @@
+@import './transition.scss';
+
 body {
     height: 100%;
     -moz-osx-font-smoothing: grayscale;
@@ -14,4 +16,39 @@ body,
     overflow: hidden;
     box-sizing: border-box;
     color: #BEDAF1;
+}
+
+a {
+    color: #f6fafc;
+    text-decoration: none;
+}
+
+a:focus,
+a:active {
+    outline: none;
+    opacity: 0.78;
+}
+
+a,
+a:focus,
+a:hover {
+    cursor: pointer;
+    color: inherit;
+    text-decoration: none;
+}
+
+
+.flex-box {
+    display: flex;
+    align-items: center;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
 }

@@ -1,12 +1,12 @@
 /*
  * @Author: shiliangL
  * @Date: 2021-06-09 13:39:57
- * @LastEditTime: 2021-06-10 17:31:25
+ * @LastEditTime: 2021-06-11 14:31:18
  * @LastEditors: Do not edit
  * @Description:
  */
-import 'normalize.css/normalize.css'; // a modern alternative to CSS resets
-import '@/styles/index.scss'; // global css
+import 'normalize.css/normalize.css';
+import '@/styles/index.scss';
 import Vue from 'vue';
 import App from './App.vue';
 import router from './router';

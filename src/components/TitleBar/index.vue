@@ -1,19 +1,32 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-11 08:51:53
- * @LastEditTime: 2021-06-11 10:09:22
+ * @LastEditTime: 2021-06-11 14:07:40
  * @LastEditors: Do not edit
  * @Description:
 -->
 <template>
-  <div class="title-line">
-    example
+  <div
+    class="title-line"
+    :class="round?'round':''"
+  >
+    {{ title }}
   </div>
 </template>
 
 <script>
 export default {
   name: 'TitleBar',
+  props: {
+    round: {
+      type: Boolean,
+      default: () => true,
+    },
+    title: {
+      type: String,
+      default: () => 'TitleBar',
+    },
+  },
 };
 </script>
 
@@ -25,12 +38,14 @@ export default {
   padding-left: 14px;
   position: relative;
   background: transparent;
-  border-radius: 22px 0 0 0;
   background-image: linear-gradient(
     to right,
-    rgba(21, 49, 86, 0.78),
+    rgb(50, 97, 168),
     rgba(21, 31, 46, 0)
   );
+  &.round {
+    border-radius: 22px 0 0 0;
+  }
   &::after {
     content: "";
     display: block;
