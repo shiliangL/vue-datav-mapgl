@@ -3,12 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "mapvgl": "^1.0.0-beta.127",
+    "normalize.css": "7.0.0",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
     "vuex": "^3.4.0"
@@ -25,7 +27,10 @@
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-vue": "^6.2.2",
     "node-sass": "^4.12.0",
+    "postcss-px2rem": "^0.3.0",
+    "px2rem-loader": "^0.1.9",
     "sass-loader": "^8.0.2",
+    "svg-sprite-loader": "^6.0.7",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
