@@ -1,18 +1,54 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-11 13:45:53
- * @LastEditTime: 2021-06-11 15:51:11
+ * @LastEditTime: 2021-06-11 16:09:56
  * @LastEditors: Do not edit
  * @Description: 人员安全预警监控-->
 
 <template>
   <div class="page-content">
     <MapSiderBar placement="left">
-      <TitleBar
-        title="人员安全预警监控"
-        v-for="kk in 4"
-        :key="kk"
-      >
+      <TitleBar title="人员安全预警监控">
+        <div class="flex-box">
+          <div class="flex-box-item">
+            <div class="number"> 人流量统计 </div>
+            <div class="title"> 3638 </div>
+          </div>
+          <div class="flex-box-item">
+            <div class="number"> 人流量统计 </div>
+            <div class="title"> 3638 </div>
+          </div>
+          <div class="flex-box-item">
+            <div class="number"> 人流量统计 </div>
+            <div class="title"> 3638 </div>
+          </div>
+          <div class="flex-box-item">
+            <div class="number"> 人流量统计 </div>
+            <div class="title"> 3638 </div>
+          </div>
+        </div>
+      </TitleBar>
+      <TitleBar title="人员概况">
+        <div class="flex-box">
+          <div class="flex-box-item">
+            <div class="number"> 人流量统计 </div>
+            <div class="title"> 3638 </div>
+          </div>
+          <div class="flex-box-item">
+            <div class="number"> 人流量统计 </div>
+            <div class="title"> 3638 </div>
+          </div>
+          <div class="flex-box-item">
+            <div class="number"> 人流量统计 </div>
+            <div class="title"> 3638 </div>
+          </div>
+          <div class="flex-box-item">
+            <div class="number"> 人流量统计 </div>
+            <div class="title"> 3638 </div>
+          </div>
+        </div>
+      </TitleBar>
+      <TitleBar title="人员分析">
         <div class="flex-box">
           <div class="flex-box-item">
             <div class="number"> 人流量统计 </div>

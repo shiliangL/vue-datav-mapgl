@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-09 13:39:57
- * @LastEditTime: 2021-06-11 15:47:56
+ * @LastEditTime: 2021-06-11 18:00:13
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -9,6 +9,10 @@
   <div class="layout">
     <header-bar />
     <div id="home" />
+    <select-bar
+      class="map-select"
+      v-if="0"
+    />
     <navigation-bar />
     <transition name="transitionLeft">
       <router-view class="transitionRouter" />
@@ -21,11 +25,12 @@
 import darkStyle from '@/utils/mapStyle';
 import components from '../components/index';
 
-const { BMapGL } = window;
+const { BMapGL, mapvgl } = window;
 
 export default {
   name: 'Home',
   components: {
+    SelectBar: components.SelectBar,
     HeaderBar: components.HeaderBar,
     NavigationBar: components.NavigationBar,
   },
@@ -41,6 +46,7 @@ export default {
           strokeWeight: 2,
           strokeOpacity: 1,
         });
+        this.initDarw();
       }
     });
   },
@@ -56,7 +62,7 @@ export default {
       map.disableDoubleClickZoom();
       map.setMinZoom(minZoom);
       map.setHeading(0);
-      map.setTilt(84.5);
+      map.setTilt(90);
       return map;
     },
     // 自定义边界绘制
@@ -79,7 +85,39 @@ export default {
         });
       });
     },
-
+    initDarw() {
+      const list = [];
+      let randomCount = 100;
+      // eslint-disable-next-line no-plusplus
+      while (randomCount--) {
+        const cityCenter = { lng: 113.936577, lat: 22.545518 };
+        list.push({
+          geometry: {
+            type: 'Point',
+            coordinates: [cityCenter.lng + Math.random() * 0.4, cityCenter.lat + Math.random() * 0.4],
+          },
+          properties: {
+            count: Math.random() * 40,
+          },
+        });
+      }
+      // 创建 MapVGL图层
+      const view = new mapvgl.View({
+        map: this.map,
+      });
+      // 创建 可视化图层
+      const pointLayer = new mapvgl.PointLayer({
+        blend: 'lighter',
+        size(item) {
+          return item.properties.count;
+        },
+        color: 'rgba(89, 0, 179,0.86)',
+      });
+      // 创建 MapVGL中Add可视化图层
+      view.addLayer(pointLayer);
+      // 可视化图层设置数据
+      pointLayer.setData(list);
+    },
   },
 };
 </script>
@@ -101,6 +139,12 @@ export default {
     position: relative;
     position: absolute;
     background: #060b14;
+  }
+  .map-select {
+    top: 40px;
+    z-index: 2;
+    position: fixed;
+    right: $map-sider-bar-width;
   }
 }
 </style>

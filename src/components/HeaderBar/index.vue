@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-11 11:20:24
- * @LastEditTime: 2021-06-11 11:22:15
+ * @LastEditTime: 2021-06-11 16:03:24
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -31,13 +31,13 @@ export default {
 
 .header {
   z-index: 2;
-  position: relative;
   height: 40px;
   line-height: 40px;
+  position: relative;
   box-sizing: border-box;
-  background: url("~@/assets/imgs/header_bar.png") no-repeat;
+  box-sizing: border-box;
   background-size: 100% 100%;
-  box-sizing: border-box;
+  background: url("~@/assets/imgs/header_bar.png") no-repeat;
 }
 .header-title {
   margin: 0;

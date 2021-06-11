@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-11 09:22:01
- * @LastEditTime: 2021-06-11 15:41:44
+ * @LastEditTime: 2021-06-11 16:05:18
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -28,13 +28,15 @@ export default {
 
 <style lang="scss" scoped>
 .map-sider-bar-item {
-  z-index: 10;
-  position: fixed;
   top: 30px;
-  bottom: 20px;
   height: 90%;
-  width: $map-sider-bar-width;
+  z-index: 10;
+  bottom: 20px;
   padding: 10px;
+  position: fixed;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: $map-sider-bar-width;
 }
 .left {
   left: 10px;
