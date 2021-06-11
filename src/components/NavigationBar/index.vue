@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-11 09:32:18
- * @LastEditTime: 2021-06-11 13:58:19
+ * @LastEditTime: 2021-06-11 14:43:00
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -49,6 +49,7 @@ export default {
   transform: translate(50%, 0%);
   background: rgba(46, 91, 162, 0.33);
   .NavigationBar-inner {
+    color: #f6fafc;
     display: flex;
     align-items: center;
     justify-content: space-around;

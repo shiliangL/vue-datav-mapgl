@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-09 13:39:57
- * @LastEditTime: 2021-06-11 14:27:57
+ * @LastEditTime: 2021-06-11 15:47:56
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -10,11 +10,8 @@
     <header-bar />
     <div id="home" />
     <navigation-bar />
-    <transition
-      enter-active-class="animate__animated animate__fadeInLeft"
-      leave-active-class="animate__animated animate__fadeInRight"
-    >
-      <router-view />
+    <transition name="transitionLeft">
+      <router-view class="transitionRouter" />
     </transition>
   </div>
 </template>

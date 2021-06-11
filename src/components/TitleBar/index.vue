@@ -1,16 +1,19 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-11 08:51:53
- * @LastEditTime: 2021-06-11 14:07:40
+ * @LastEditTime: 2021-06-11 15:47:29
  * @LastEditors: Do not edit
  * @Description:
 -->
 <template>
-  <div
-    class="title-line"
-    :class="round?'round':''"
-  >
-    {{ title }}
+  <div class="TitleBar">
+    <div
+      class="title-line"
+      :class="round?'round':''"
+      v-text="title"
+    >
+    </div>
+    <slot></slot>
   </div>
 </template>
 
@@ -32,10 +35,13 @@ export default {
 
 <style lang="scss" scoped>
 .title-line {
+  font-size: 14Px;
+  font-weight: 400;
   color: #bad6f1;
   height: 24px;
   line-height: 24px;
-  padding-left: 14px;
+  padding-left: 12px;
+  margin-bottom: 4Px;
   position: relative;
   background: transparent;
   background-image: linear-gradient(

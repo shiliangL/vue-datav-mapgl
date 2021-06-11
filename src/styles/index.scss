@@ -41,6 +41,9 @@ a:hover {
 .flex-box {
     display: flex;
     align-items: center;
+    .flex-box-item{
+        flex: 1;
+    }
 }
 
 .fade-enter-active,
