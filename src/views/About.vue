@@ -1,38 +1,34 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-09 13:39:57
- * @LastEditTime: 2021-06-11 08:41:24
+ * @LastEditTime: 2021-06-11 10:26:59
  * @LastEditors: Do not edit
  * @Description:
 -->
 <template>
-  <div class="map-sider-bar">
-    <div class="map-sider-bar-item left">
-      左边
-    </div>
-    <div class="map-sider-bar-item right">
-      左边
-    </div>
+  <div class="page-content">
+    <MapSiderBar placement="left">
+      <TitleBar></TitleBar>
+    </MapSiderBar>
+    <MapSiderBar placement="right">
+      <TitleBar></TitleBar>
+    </MapSiderBar>
   </div>
 </template>
 
+<script>
+
+// eslint-disable-next-line import/named
+import components from '../components/index';
+
+export default {
+  components: {
+    TitleBar: components.TitleBar,
+    MapSiderBar: components.MapSiderBar,
+  },
+};
+</script>
+
 <style lang="scss" scoped>
-.map-sider-bar-item {
-  z-index: 2;
-  position: fixed;
-  top: 30px;
-  bottom: 20px;
-  height: 90%;
-  width: 240px;
-  padding: 10px;
-  border-radius: 4px;
-  background: rgba(0, 0, 0, 0.23);
-  box-shadow: 0 0 3rem rgba(45, 89, 160, 0.78) inset;
-}
-.left {
-  left: 10px;
-}
-.right {
-  right: 10px;
-}
+
 </style>

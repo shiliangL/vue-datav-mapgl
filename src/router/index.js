@@ -1,7 +1,7 @@
 /*
  * @Author: shiliangL
  * @Date: 2021-06-09 13:39:57
- * @LastEditTime: 2021-06-11 08:51:47
+ * @LastEditTime: 2021-06-11 09:20:44
  * @LastEditors: Do not edit
  * @Description:
  */
@@ -27,7 +27,7 @@ const routes = [
   {
     path: '/example',
     name: 'Example',
-    component: () => import('../views/example.vue'),
+    component: () => import('../views/Example.vue'),
   },
 ];
 

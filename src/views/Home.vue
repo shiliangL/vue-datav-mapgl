@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-09 13:39:57
- * @LastEditTime: 2021-06-11 08:25:46
+ * @LastEditTime: 2021-06-11 10:29:28
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -10,15 +10,8 @@
     <div class="header">
       <h1 class="header-title">智慧云平台</h1>
     </div>
-    <div
-      ref="layout-map"
-      class="home"
-      id="home"
-    />
-    <div class="navigation">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <div id="home" />
+    <navigation-bar> </navigation-bar>
     <router-view />
   </div>
 </template>
@@ -26,11 +19,15 @@
 <script>
 
 import darkStyle from '@/utils/mapStyle';
+import components from '../components/index';
 
 const { BMapGL } = window;
 
 export default {
   name: 'Home',
+  components: {
+    NavigationBar: components.NavigationBar,
+  },
   mounted() {
     this.$nextTick().then(() => {
       if (BMapGL) {
@@ -92,7 +89,7 @@ export default {
   height: 100%;
   overflow: hidden;
   position: relative;
-  // background: #060b14;
+  background: #060b14;
   .header {
     z-index: 2;
     position: relative;
@@ -103,7 +100,6 @@ export default {
     background-size: 100% 100%;
     box-sizing: border-box;
   }
-
   .header-title {
     color: #f6fafc;
     margin: 0;
@@ -112,7 +108,7 @@ export default {
     font-size: 24px;
     font-weight: 400;
   }
-  .home {
+  #home {
     left: 0;
     top: 0;
     width: 100%;
@@ -122,13 +118,6 @@ export default {
     position: relative;
     position: absolute;
     background: #060b14;
-  }
-  .navigation {
-    left: 0;
-    bottom: 0;
-    z-index: 2;
-    position: absolute;
-    transform: translate(-50%, 0%);
   }
 }
 </style>
