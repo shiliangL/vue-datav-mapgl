@@ -1,23 +1,30 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-11 09:32:18
- * @LastEditTime: 2021-06-11 14:43:00
+ * @LastEditTime: 2021-06-12 16:19:19
  * @LastEditors: Do not edit
  * @Description:
 -->
 <template>
   <div class="NavigationBar">
     <div class="NavigationBar-inner">
-      <div
-        class="NavigationBar-item"
+      <router-link
+        :to="item.url"
+        class="router-link"
         v-for="(item,index) in navigationList"
         :key="index"
       >
-        <router-link
-          :to="item.url"
-          v-text="item.text"
-        > </router-link>
-      </div>
+        <div class="NavigationBar-item">
+          <div class="active">
+            <svg-icon :iconClass="item.iconClass" />
+          </div>
+          <div
+            class="link-text"
+            v-text="item.text"
+          >
+          </div>
+        </div>
+      </router-link>
     </div>
   </div>
 </template>
@@ -28,31 +35,77 @@ export default {
   data() {
     return {
       navigationList: [
-        { text: '人员预警', url: '/thePeopleWarning' },
-        { text: '车辆预警', url: '/theVehicleWarning' },
-        { text: '综合监控', url: '/safetyWarning' },
-        { text: '安全预警', url: '/earlyWarning' },
+        { iconClass: 'thePeopleWarning', text: '人员预警', url: '/thePeopleWarning' },
+        { iconClass: 'theVehicleWarning', text: '车辆预警', url: '/theVehicleWarning' },
+        { iconClass: 'safetyWarning', text: '综合监控', url: '/safetyWarning' },
+        { iconClass: 'earlyWarning', text: '安全预警', url: '/earlyWarning' },
       ],
     };
+  },
+  mounted() {
+
   },
 };
 </script>
 
 <style lang="scss" scoped>
 .NavigationBar {
-  left: 0;
+  left: 50%;
   bottom: 0;
   z-index: 2;
-  width: 50%;
+  width: 46%;
   padding: 4px;
   position: fixed;
-  transform: translate(50%, 0%);
-  background: rgba(46, 91, 162, 0.33);
-  .NavigationBar-inner {
-    color: #f6fafc;
+  transform: translate(-50%, 0%);
+  background-size: 100% 100%;
+  background: url("~@/assets/nav_bg.png") no-repeat;
+  .NavigationBar-item {
+    padding: 4px 10px;
     display: flex;
+    overflow: hidden;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .NavigationBar-inner {
+    display: flex;
+    color: $themeWhiteColoe;
     align-items: center;
     justify-content: space-around;
+  }
+
+  .router-link {
+    font-size: 12px;
+    font-weight: 800;
+    overflow: hidden;
+    display: block;
+    transition: all 0.1s;
+    &.router-link-active {
+      color: $themeWhiteColoe;
+      font-size: 16px;
+      .active {
+        width: 42px;
+        height: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient($themeColoe, $themeColoe) left top,
+          linear-gradient($themeColoe, rgb(145, 145, 185)) left top,
+          linear-gradient($themeColoe, $themeColoe) right top,
+          linear-gradient($themeColoe, $themeColoe) right top,
+          linear-gradient($themeColoe, $themeColoe) left bottom,
+          linear-gradient($themeColoe, $themeColoe) left bottom,
+          linear-gradient($themeColoe, $themeColoe) right bottom,
+          linear-gradient($themeColoe, $themeColoe) right bottom;
+        background-repeat: no-repeat;
+        background-size: 1px 10px, 10px 1px;
+      }
+    }
+  }
+
+  .link-text {
+    padding-top: 4px;
   }
 }
 </style>

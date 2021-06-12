@@ -14,8 +14,9 @@ body,
     width: 100%;
     height: 100%;
     overflow: hidden;
-    box-sizing: border-box;
+    line-height: 1.4;
     color: #BEDAF1;
+    box-sizing: border-box;
 }
 
 a {
@@ -26,7 +27,6 @@ a {
 a:focus,
 a:active {
     outline: none;
-    opacity: 0.78;
 }
 
 a,
@@ -45,14 +45,41 @@ a:hover {
     .flex-box-item {
         flex: 1;
     }
-}
 
-.fade-enter-active,
-.fade-leave-active {
-    transition: opacity 0.5s ease;
-}
+    .number {
+        color: $themeWhiteColoe;
+        font-weight: 400;
+        font-size: 18px;
+    }
 
-.fade-enter-from,
-.fade-leave-to {
-    opacity: 0;
+    .title {
+        font-size: 12Px;
+    }
+
+    .flex-box-item {
+        padding: 2px 0;
+    }
+
+    .flex-box-line-row {
+        flex: 1;
+        display: flex;
+        align-items: center;
+    }
+
+    // 线条渐变
+    .flex-box-item-line {
+        flex: 1;
+        padding: 2px 4px;
+        background: transparent;
+        border: 1px transparent solid;
+        border-image: $base-theme-gradient 1 4;
+
+        &.flex-box {
+            justify-content: space-around;
+        }
+
+        &:not(:last-child) {
+            margin-bottom: 4px;
+        }
+    }
 }

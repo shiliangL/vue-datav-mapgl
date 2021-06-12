@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-11 11:20:24
- * @LastEditTime: 2021-06-11 16:03:24
+ * @LastEditTime: 2021-06-12 09:57:30
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -43,7 +43,7 @@ export default {
   margin: 0;
   padding: 0;
   font-size: 24px;
-  color: #f6fafc;
+  color: $themeWhiteColoe;
   font-weight: 400;
   text-align: center;
 }

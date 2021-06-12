@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-11 08:51:53
- * @LastEditTime: 2021-06-11 15:47:29
+ * @LastEditTime: 2021-06-12 10:58:58
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -13,7 +13,9 @@
       v-text="title"
     >
     </div>
-    <slot></slot>
+    <div class="inner">
+      <slot></slot>
+    </div>
   </div>
 </template>
 
@@ -35,20 +37,16 @@ export default {
 
 <style lang="scss" scoped>
 .title-line {
-  font-size: 14Px;
-  font-weight: 400;
+  font-size: 14px;
+  font-weight: 600;
   color: #bad6f1;
-  height: 24px;
-  line-height: 24px;
+  height: 32px;
+  line-height: 32px;
   padding-left: 12px;
-  margin-bottom: 4Px;
+  margin-bottom: 4px;
   position: relative;
   background: transparent;
-  background-image: linear-gradient(
-    to right,
-    rgb(50, 97, 168),
-    rgba(21, 31, 46, 0)
-  );
+  background-image: $base-theme-gradient;
   &.round {
     border-radius: 22px 0 0 0;
   }
@@ -72,5 +70,8 @@ export default {
     height: 1px;
     background: #1d7ff5;
   }
+}
+.inner {
+  padding: 8px;
 }
 </style>
