@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-11 09:22:01
- * @LastEditTime: 2021-06-12 08:24:52
+ * @LastEditTime: 2021-06-12 17:18:54
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -28,8 +28,8 @@ export default {
 
 <style lang="scss" scoped>
 .map-sider-bar-item {
-  top: 0px;
-  bottom: 0px;
+  top: 40px;
+  bottom: 20px;
   z-index: 10;
   height: 100%;
   padding: 10px;

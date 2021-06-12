@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-09 13:39:57
- * @LastEditTime: 2021-06-12 09:06:30
+ * @LastEditTime: 2021-06-12 16:57:34
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -48,6 +48,7 @@ export default {
     fetch('/static/mock.json', {
       method: 'get',
     }).then((data) => data.json()).then((result) => {
+      // eslint-disable-next-line no-console
       console.log(result);
     });
   },

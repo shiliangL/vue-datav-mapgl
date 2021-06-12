@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-11 09:32:18
- * @LastEditTime: 2021-06-12 16:19:19
+ * @LastEditTime: 2021-06-12 16:29:25
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -57,8 +57,8 @@ export default {
   padding: 4px;
   position: fixed;
   transform: translate(-50%, 0%);
-  background-size: 100% 100%;
   background: url("~@/assets/nav_bg.png") no-repeat;
+  background-size: cover;
   .NavigationBar-item {
     padding: 4px 10px;
     display: flex;
