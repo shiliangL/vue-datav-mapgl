@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-11 09:32:18
- * @LastEditTime: 2021-06-15 09:21:37
+ * @LastEditTime: 2021-06-15 21:48:15
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -85,7 +85,7 @@ export default {
     font-weight: 800;
     overflow: hidden;
     display: block;
-    transition: all 0.1s;
+    transition: all 0.42s ease-out;
     &.router-link-active {
       color: $themeWhiteColoe;
       font-size: 16px;

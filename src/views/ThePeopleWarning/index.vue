@@ -1,9 +1,10 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-11 13:45:53
- * @LastEditTime: 2021-06-12 23:16:09
+ * @LastEditTime: 2021-06-15 21:49:59
  * @LastEditors: Do not edit
- * @Description: 人员安全预警监控-->
+ * @Description: 人员安全预警监控 ThePeopleWarning
+ -->
 
 <template>
   <div class="page-content">
