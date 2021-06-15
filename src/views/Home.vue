@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-09 13:39:57
- * @LastEditTime: 2021-06-11 18:00:13
+ * @LastEditTime: 2021-06-15 09:11:21
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -14,9 +14,9 @@
       v-if="0"
     />
     <navigation-bar />
-    <transition name="transitionLeft">
+    <!-- <transition name="transitionLeft"> -->
       <router-view class="transitionRouter" />
-    </transition>
+    <!-- </transition> -->
   </div>
 </template>
 

@@ -1,15 +1,12 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-11 09:22:01
- * @LastEditTime: 2021-06-11 16:05:18
+ * @LastEditTime: 2021-06-15 09:15:19
  * @LastEditors: Do not edit
  * @Description:
 -->
 <template>
-  <div
-    class="map-sider-bar-item"
-    :class="placement"
-  >
+  <div :class="['map-sider-bar-item',placement]">
     <slot></slot>
   </div>
 </template>
@@ -22,6 +19,27 @@ export default {
       type: String,
       default: () => 'left',
     },
+    animationTime: {
+      type: Number,
+      default: () => 0,
+    },
+  },
+  mounted() {
+    this.$nextTick().then(() => {
+      const { $el, placement, animationTime } = this;
+      if (placement === 'left') {
+        $el.style.left = '-100%';
+      } else {
+        $el.style.right = '-100%';
+      }
+      setTimeout(() => {
+        if (placement === 'left') {
+          $el.style.left = '10px';
+        } else {
+          $el.style.right = '10px';
+        }
+      }, animationTime);
+    });
   },
 };
 </script>
@@ -37,11 +55,18 @@ export default {
   overflow-y: auto;
   overflow-x: hidden;
   width: $map-sider-bar-width;
-}
-.left {
-  left: 10px;
-}
-.right {
-  right: 10px;
+  transition: all 0.66s ease-out;
+  // &.left {
+  //   left: -100%;
+  // }
+  // &.right {
+  //   right: -100%;
+  // }
+  // &.animationLeft{
+  //   left: 10px;
+  // }
+  // &.animationRight{
+  //   right: 10px;
+  // }
 }
 </style>
