@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-09 13:39:57
- * @LastEditTime: 2021-06-15 09:11:21
+ * @LastEditTime: 2021-06-15 09:16:51
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -9,10 +9,6 @@
   <div class="layout">
     <header-bar />
     <div id="home" />
-    <select-bar
-      class="map-select"
-      v-if="0"
-    />
     <navigation-bar />
     <!-- <transition name="transitionLeft"> -->
       <router-view class="transitionRouter" />
@@ -30,24 +26,30 @@ const { BMapGL, mapvgl } = window;
 export default {
   name: 'Home',
   components: {
-    SelectBar: components.SelectBar,
+    // SelectBar: components.SelectBar,
     HeaderBar: components.HeaderBar,
     NavigationBar: components.NavigationBar,
   },
   mounted() {
-    this.$nextTick().then(() => {
-      if (BMapGL) {
-        this.map = this.initMap('home', '广东省深圳市', 12);
-        this.generateDistrictBoundary(this.map, '广东省深圳市', {
-          strokeStyle: 'solid',
-          strokeColor: '#6AC3EB',
-          fillColor: '#4b93ff',
-          fillOpacity: 0.1,
-          strokeWeight: 2,
-          strokeOpacity: 1,
-        });
-        this.initDarw();
-      }
+    // this.$nextTick().then(() => {
+    //   if (BMapGL) {
+    //     this.map = this.initMap('home', '广东省深圳市', 12);
+    //     this.generateDistrictBoundary(this.map, '广东省深圳市', {
+    //       strokeStyle: 'solid',
+    //       strokeColor: '#6AC3EB',
+    //       fillColor: '#4b93ff',
+    //       fillOpacity: 0.1,
+    //       strokeWeight: 2,
+    //       strokeOpacity: 1,
+    //     });
+    //     this.initDarw();
+    //   }
+    // });
+    fetch('/static/mock.json', {
+      method: 'get',
+    }).then((data) => data.json()).then((result) => {
+      // eslint-disable-next-line no-console
+      console.log(result);
     });
   },
   methods: {
@@ -62,7 +64,7 @@ export default {
       map.disableDoubleClickZoom();
       map.setMinZoom(minZoom);
       map.setHeading(0);
-      map.setTilt(90);
+      map.setTilt(60);
       return map;
     },
     // 自定义边界绘制
@@ -91,10 +93,11 @@ export default {
       // eslint-disable-next-line no-plusplus
       while (randomCount--) {
         const cityCenter = { lng: 113.936577, lat: 22.545518 };
+        const random = [cityCenter.lng + Math.random() * 0.4, cityCenter.lat + Math.random() * 0.4];
         list.push({
           geometry: {
             type: 'Point',
-            coordinates: [cityCenter.lng + Math.random() * 0.4, cityCenter.lat + Math.random() * 0.4],
+            coordinates: random,
           },
           properties: {
             count: Math.random() * 40,

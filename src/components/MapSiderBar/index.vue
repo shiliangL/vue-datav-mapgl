@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-11 09:22:01
- * @LastEditTime: 2021-06-15 09:15:19
+ * @LastEditTime: 2021-06-15 09:16:37
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -46,15 +46,16 @@ export default {
 
 <style lang="scss" scoped>
 .map-sider-bar-item {
-  top: 30px;
-  height: 90%;
-  z-index: 10;
+  top: 40px;
   bottom: 20px;
+  z-index: 10;
+  height: 100%;
   padding: 10px;
   position: fixed;
   overflow-y: auto;
   overflow-x: hidden;
   width: $map-sider-bar-width;
+<<<<<<< HEAD
   transition: all 0.66s ease-out;
   // &.left {
   //   left: -100%;
@@ -68,5 +69,14 @@ export default {
   // &.animationRight{
   //   right: 10px;
   // }
+=======
+  background-image: $base-black-gradient;
+}
+.left {
+  left: 10px;
+}
+.right {
+  right: 10px;
+>>>>>>> bf7d0db96cacc24566fe46b267d9f489472d7fa4
 }
 </style>
