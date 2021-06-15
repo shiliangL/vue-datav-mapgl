@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-11 09:22:01
- * @LastEditTime: 2021-06-15 09:16:37
+ * @LastEditTime: 2021-06-15 09:18:04
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -55,28 +55,6 @@ export default {
   overflow-y: auto;
   overflow-x: hidden;
   width: $map-sider-bar-width;
-<<<<<<< HEAD
   transition: all 0.66s ease-out;
-  // &.left {
-  //   left: -100%;
-  // }
-  // &.right {
-  //   right: -100%;
-  // }
-  // &.animationLeft{
-  //   left: 10px;
-  // }
-  // &.animationRight{
-  //   right: 10px;
-  // }
-=======
-  background-image: $base-black-gradient;
-}
-.left {
-  left: 10px;
-}
-.right {
-  right: 10px;
->>>>>>> bf7d0db96cacc24566fe46b267d9f489472d7fa4
 }
 </style>

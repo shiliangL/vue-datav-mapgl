@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-11 09:32:18
- * @LastEditTime: 2021-06-12 16:29:25
+ * @LastEditTime: 2021-06-15 09:21:37
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -60,9 +60,9 @@ export default {
   background: url("~@/assets/nav_bg.png") no-repeat;
   background-size: cover;
   .NavigationBar-item {
-    padding: 4px 10px;
     display: flex;
     overflow: hidden;
+    padding: 4px 10px;
     align-items: center;
     flex-direction: column;
     justify-content: center;
@@ -70,8 +70,8 @@ export default {
 
   .NavigationBar-inner {
     display: flex;
-    color: $themeWhiteColoe;
     align-items: center;
+    color: $themeWhiteColoe;
     justify-content: space-around;
   }
 
