@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-11 09:22:01
- * @LastEditTime: 2021-06-12 17:18:54
+ * @LastEditTime: 2021-06-12 22:39:46
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -31,13 +31,14 @@ export default {
   top: 40px;
   bottom: 20px;
   z-index: 10;
-  height: 100%;
+  height: 90%;
   padding: 10px;
   position: fixed;
   overflow-y: auto;
   overflow-x: hidden;
   width: $map-sider-bar-width;
-  background-image: $base-black-gradient;
+  background: rgba($color: #000000, $alpha: 0.66);
+  // background-image: $base-black-gradient;
 }
 .left {
   left: 10px;

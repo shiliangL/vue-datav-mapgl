@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-11 09:32:18
- * @LastEditTime: 2021-06-12 16:29:25
+ * @LastEditTime: 2021-06-12 23:00:29
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -54,6 +54,7 @@ export default {
   bottom: 0;
   z-index: 2;
   width: 46%;
+  height: 80px;
   padding: 4px;
   position: fixed;
   transform: translate(-50%, 0%);
@@ -69,9 +70,13 @@ export default {
   }
 
   .NavigationBar-inner {
+    position: absolute;
+    width: 100%;
+    bottom: 10px;
+
     display: flex;
-    color: $themeWhiteColoe;
     align-items: center;
+    color: $themeWhiteColoe;
     justify-content: space-around;
   }
 
@@ -85,19 +90,19 @@ export default {
       color: $themeWhiteColoe;
       font-size: 16px;
       .active {
-        width: 42px;
-        height: 42px;
+        width: 84px;
+        height: 84px;
         display: flex;
         align-items: center;
         justify-content: center;
-        background: linear-gradient($themeColoe, $themeColoe) left top,
-          linear-gradient($themeColoe, rgb(145, 145, 185)) left top,
-          linear-gradient($themeColoe, $themeColoe) right top,
-          linear-gradient($themeColoe, $themeColoe) right top,
-          linear-gradient($themeColoe, $themeColoe) left bottom,
-          linear-gradient($themeColoe, $themeColoe) left bottom,
-          linear-gradient($themeColoe, $themeColoe) right bottom,
-          linear-gradient($themeColoe, $themeColoe) right bottom;
+        background: linear-gradient($themeWhiteColoe, $themeWhiteColoe) left top,
+          linear-gradient($themeWhiteColoe, rgb(145, 145, 185)) left top,
+          linear-gradient($themeWhiteColoe, $themeWhiteColoe) right top,
+          linear-gradient($themeWhiteColoe, $themeWhiteColoe) right top,
+          linear-gradient($themeWhiteColoe, $themeWhiteColoe) left bottom,
+          linear-gradient($themeWhiteColoe, $themeWhiteColoe) left bottom,
+          linear-gradient($themeWhiteColoe, $themeWhiteColoe) right bottom,
+          linear-gradient($themeWhiteColoe, $themeWhiteColoe) right bottom;
         background-repeat: no-repeat;
         background-size: 1px 10px, 10px 1px;
       }

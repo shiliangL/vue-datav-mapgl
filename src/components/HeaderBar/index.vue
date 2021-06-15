@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-11 11:20:24
- * @LastEditTime: 2021-06-12 09:57:30
+ * @LastEditTime: 2021-06-12 22:57:08
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -28,21 +28,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .header {
+  width: 70%;
+  left: 50%;
+  top: 0;
   z-index: 2;
-  height: 40px;
-  line-height: 40px;
-  position: relative;
+  height: 54px;
+  line-height: 54px;
+  position: fixed;
   box-sizing: border-box;
   box-sizing: border-box;
-  background-size: 100% 100%;
+  transform: translate(-50%, 0%);
   background: url("~@/assets/imgs/header_bar.png") no-repeat;
+  background-size: cover;
 }
 .header-title {
   margin: 0;
   padding: 0;
-  font-size: 24px;
+  font-size: 26px;
   color: $themeWhiteColoe;
   font-weight: 400;
   text-align: center;

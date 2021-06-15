@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-09 13:39:57
- * @LastEditTime: 2021-06-12 16:57:34
+ * @LastEditTime: 2021-06-12 22:40:37
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -31,20 +31,20 @@ export default {
     NavigationBar: components.NavigationBar,
   },
   mounted() {
-    // this.$nextTick().then(() => {
-    //   if (BMapGL) {
-    //     this.map = this.initMap('home', '广东省深圳市', 12);
-    //     this.generateDistrictBoundary(this.map, '广东省深圳市', {
-    //       strokeStyle: 'solid',
-    //       strokeColor: '#6AC3EB',
-    //       fillColor: '#4b93ff',
-    //       fillOpacity: 0.1,
-    //       strokeWeight: 2,
-    //       strokeOpacity: 1,
-    //     });
-    //     this.initDarw();
-    //   }
-    // });
+    this.$nextTick().then(() => {
+      if (BMapGL) {
+        this.map = this.initMap('home', '广东省深圳市', 12);
+        this.generateDistrictBoundary(this.map, '广东省深圳市', {
+          strokeStyle: 'solid',
+          strokeColor: '#6AC3EB',
+          fillColor: '#4b93ff',
+          fillOpacity: 0.1,
+          strokeWeight: 2,
+          strokeOpacity: 1,
+        });
+        this.initDarw();
+      }
+    });
     fetch('/static/mock.json', {
       method: 'get',
     }).then((data) => data.json()).then((result) => {
@@ -64,7 +64,7 @@ export default {
       map.disableDoubleClickZoom();
       map.setMinZoom(minZoom);
       map.setHeading(0);
-      map.setTilt(60);
+      map.setTilt(45);
       return map;
     },
     // 自定义边界绘制

@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-05-21 11:21:03
- * @LastEditTime: 2021-06-11 21:12:09
+ * @LastEditTime: 2021-06-12 22:51:19
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -65,8 +65,8 @@ export default {
 <style scoped>
 
 .svg-icon {
-  width: 3rem;
-  height: 3rem;
+  width: 6rem;
+  height: 6rem;
   fill: currentColor;
   overflow: hidden;
   vertical-align: -0.15em;
