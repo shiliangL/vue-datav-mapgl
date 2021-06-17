@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-11 09:32:18
- * @LastEditTime: 2021-06-15 09:21:37
+ * @LastEditTime: 2021-06-15 09:25:14
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -56,6 +56,7 @@ export default {
   width: 46%;
   padding: 4px;
   position: fixed;
+  user-select: none;
   transform: translate(-50%, 0%);
   background: url("~@/assets/nav_bg.png") no-repeat;
   background-size: cover;
@@ -69,6 +70,7 @@ export default {
   }
 
   .NavigationBar-inner {
+    width: 100%;
     display: flex;
     align-items: center;
     color: $themeWhiteColoe;

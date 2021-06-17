@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-09 13:39:57
- * @LastEditTime: 2021-06-15 09:16:51
+ * @LastEditTime: 2021-06-15 09:24:33
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -10,9 +10,7 @@
     <header-bar />
     <div id="home" />
     <navigation-bar />
-    <!-- <transition name="transitionLeft"> -->
-      <router-view class="transitionRouter" />
-    <!-- </transition> -->
+    <router-view class="transitionRouter" />
   </div>
 </template>
 
@@ -31,20 +29,20 @@ export default {
     NavigationBar: components.NavigationBar,
   },
   mounted() {
-    // this.$nextTick().then(() => {
-    //   if (BMapGL) {
-    //     this.map = this.initMap('home', '广东省深圳市', 12);
-    //     this.generateDistrictBoundary(this.map, '广东省深圳市', {
-    //       strokeStyle: 'solid',
-    //       strokeColor: '#6AC3EB',
-    //       fillColor: '#4b93ff',
-    //       fillOpacity: 0.1,
-    //       strokeWeight: 2,
-    //       strokeOpacity: 1,
-    //     });
-    //     this.initDarw();
-    //   }
-    // });
+    this.$nextTick().then(() => {
+      if (BMapGL) {
+        this.map = this.initMap('home', '广东省深圳市', 12);
+        this.generateDistrictBoundary(this.map, '广东省深圳市', {
+          strokeStyle: 'solid',
+          strokeColor: '#6AC3EB',
+          fillColor: '#4b93ff',
+          fillOpacity: 0.1,
+          strokeWeight: 2,
+          strokeOpacity: 1,
+        });
+        this.initDarw();
+      }
+    });
     fetch('/static/mock.json', {
       method: 'get',
     }).then((data) => data.json()).then((result) => {
