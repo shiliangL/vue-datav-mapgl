@@ -1,11 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-11 09:32:18
-<<<<<<< HEAD
- * @LastEditTime: 2021-06-17 08:24:10
-=======
- * @LastEditTime: 2021-06-15 21:48:15
->>>>>>> 17cc308dcb36e9375bf70cd47a08288fffa24593
+ * @LastEditTime: 2021-06-17 09:05:27
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -95,8 +91,8 @@ export default {
       color: $themeWhiteColoe;
       font-size: 16px;
       .active {
-        width: 84px;
-        height: 84px;
+        width: 72px;
+        height: 72px;
         display: flex;
         align-items: center;
         justify-content: center;

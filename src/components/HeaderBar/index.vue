@@ -1,28 +1,35 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-11 11:20:24
- * @LastEditTime: 2021-06-12 22:57:08
+ * @LastEditTime: 2021-06-17 10:17:35
  * @LastEditors: Do not edit
  * @Description:
 -->
 <template>
   <div class="header">
     <h1
+      v-if="title"
       class="header-title"
       v-text="title"
     ></h1>
+    <NumberRoll v-if="0"></NumberRoll>
   </div>
 </template>
 
 <script>
+
+import NumberRoll from '../NumberRoll/index.vue';
 
 export default {
   name: 'HeaderBar',
   props: {
     title: {
       type: String,
-      default: () => '智慧云平台',
+      default: () => '',
     },
+  },
+  components: {
+    NumberRoll,
   },
 };
 </script>

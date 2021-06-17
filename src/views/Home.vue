@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-09 13:39:57
- * @LastEditTime: 2021-06-15 21:55:31
+ * @LastEditTime: 2021-06-17 10:06:43
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -10,9 +10,7 @@
     <header-bar />
     <div id="home" />
     <navigation-bar />
-    <!-- <transition name="transitionLeft"> -->
     <router-view class="transitionRouter" />
-    <!-- </transition> -->
   </div>
 </template>
 
