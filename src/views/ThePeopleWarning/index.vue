@@ -1,9 +1,10 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-11 13:45:53
- * @LastEditTime: 2021-06-12 17:10:48
+ * @LastEditTime: 2021-06-15 21:49:59
  * @LastEditors: Do not edit
- * @Description: 人员安全预警监控-->
+ * @Description: 人员安全预警监控 ThePeopleWarning
+ -->
 
 <template>
   <div class="page-content">
@@ -53,17 +54,12 @@
         </div>
       </TitleBar>
       <TitleBar title="人员分析">
-
-        <PieChart></PieChart>
+        <PieChart :option="barOption" />
       </TitleBar>
     </MapSiderBar>
 
     <MapSiderBar placement="right">
-      <TitleBar
-        title="人员安全预警监控"
-        v-for="kk in 4"
-        :key="kk"
-      >
+      <TitleBar title="人员安全预警监控">
         <div class="flex-box">
           <div class="flex-box-item">
             <div class="number"> 2356 </div>
@@ -83,6 +79,29 @@
           </div>
         </div>
       </TitleBar>
+      <TitleBar title="人员安全预警监控">
+        <div class="flex-box">
+          <div class="flex-box-item">
+            <div class="number"> 2356 </div>
+            <div class="title"> 人流量统计 </div>
+          </div>
+          <div class="flex-box-item">
+            <div class="number"> 2356 </div>
+            <div class="title"> 人流量统计 </div>
+          </div>
+          <div class="flex-box-item">
+            <div class="number"> 2356 </div>
+            <div class="title"> 人流量统计 </div>
+          </div>
+          <div class="flex-box-item">
+            <div class="number"> 2356 </div>
+            <div class="title"> 人流量统计 </div>
+          </div>
+        </div>
+      </TitleBar>
+      <TitleBar title="趋势统计">
+        <PieChart :option="lineOption" />
+      </TitleBar>
     </MapSiderBar>
   </div>
 </template>
@@ -91,6 +110,7 @@
 // eslint-disable-next-line import/named
 import components from '@/components/index';
 import PieChart from '@/components/CuebChart/PieChart.vue';
+import { lineOption, barOption } from '@/utils/chartOpiton';
 
 export default {
   name: 'ThePeopleWarning',
@@ -98,6 +118,12 @@ export default {
     PieChart,
     TitleBar: components.TitleBar,
     MapSiderBar: components.MapSiderBar,
+  },
+  data() {
+    return {
+      lineOption: lineOption(),
+      barOption: barOption(),
+    };
   },
   mounted() {
     this.$nextTick().then(() => {

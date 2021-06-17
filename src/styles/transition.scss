@@ -1,23 +1,27 @@
 // global transition css
- 
-.transitionRouter{
-  transition: all .32s cubic-bezier(1.0, 0.5, 0.8, 1.0);
- }
 
- .transitionLeft-enter,
- .transitionRight-leave-active {
-   transform: translate(100%, 0);
- }
- .transitionLeft-leave-active,
- .transitionRight-enter {
-   transform: translate(-100%, 0);
- }
- .transitionLeft-enter-active,
- .transitionRight-enter-active {  
-   top: 0;
-   left: 0;
-   right: 0;
-   bottom: 0;
-   z-index:10;
-   position: absolute;
- }
+.transitionRouter {
+  transition: all .32s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+
+.transitionLeft-enter,
+.transitionRight-leave-active {
+  opacity: 1;
+  transform: translate(100%, 0);
+}
+
+.transitionLeft-leave-active,
+.transitionRight-enter {
+  opacity: 0;
+  transform: translate(-100%, 0);
+}
+
+.transitionLeft-enter-active,
+.transitionRight-enter-active {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  position: absolute;
+}

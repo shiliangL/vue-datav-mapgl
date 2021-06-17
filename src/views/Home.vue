@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-09 13:39:57
- * @LastEditTime: 2021-06-15 09:24:33
+ * @LastEditTime: 2021-06-15 21:55:31
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -10,7 +10,9 @@
     <header-bar />
     <div id="home" />
     <navigation-bar />
+    <!-- <transition name="transitionLeft"> -->
     <router-view class="transitionRouter" />
+    <!-- </transition> -->
   </div>
 </template>
 
@@ -62,7 +64,7 @@ export default {
       map.disableDoubleClickZoom();
       map.setMinZoom(minZoom);
       map.setHeading(0);
-      map.setTilt(60);
+      map.setTilt(45);
       return map;
     },
     // 自定义边界绘制

@@ -1,12 +1,16 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-12 16:39:50
- * @LastEditTime: 2021-06-12 17:27:53
+ * @LastEditTime: 2021-06-12 23:10:58
  * @LastEditors: Do not edit
  * @Description:
 -->
 <template>
-  <v-chart autoresize class="chart" :option="lineOption" />
+  <v-chart
+    autoresize
+    class="chart"
+    :option="option || barOption"
+  />
 </template>
 
 <script>
@@ -30,6 +34,11 @@ use([
 
 export default {
   name: 'PieChart',
+  props: {
+    option: {
+      type: Object,
+    },
+  },
   components: {
     VChart,
   },
@@ -38,7 +47,7 @@ export default {
   },
   data() {
     return {
-      option: {
+      pieOption: {
         backgroundColor: 'transparent',
         tooltip: {
           trigger: 'item',
@@ -100,9 +109,9 @@ export default {
         },
         grid: {
           top: '10%',
-          left: '6%',
+          left: '0%',
           right: '12%',
-          bottom: '6%',
+          bottom: '4%',
           containLabel: true,
         },
         xAxis: [
@@ -119,7 +128,7 @@ export default {
             axisLabel: {
               textStyle: {
                 color: '#FFFFFF',
-                fontSize: '16',
+                fontSize: 12,
               },
             },
             axisTick: {
@@ -150,7 +159,7 @@ export default {
               show: true,
               textStyle: {
                 color: 'rgba(255, 255, 255, 0.5)',
-                fontSize: '14',
+                fontSize: 12,
               },
             },
           },
@@ -194,6 +203,123 @@ export default {
             },
             areaStyle: {},
             data: [56, 66, 55, 83, 22, 32, 92],
+          },
+        ],
+      },
+      barOption: {
+        backgroundColor: 'transparent',
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+            type: 'shadow',
+          },
+        },
+        grid: {
+          show: false,
+          top: '2%',
+          left: '14%',
+          right: '4%',
+          bottom: '12%',
+        },
+        xAxis: [
+          {
+            type: 'category',
+            data: [
+              '姑苏区',
+              '虎丘区',
+              '吴中区',
+              '相城区',
+              '吴江区',
+              '常熟市',
+              '张家港市',
+              '昆山市',
+              '太仓市',
+              '工业园区',
+            ],
+            axisLine: {
+              show: false,
+              lineStyle: {
+                color: 'rgba(255,255,255,0.12)',
+              },
+            },
+            axisLabel: {
+              margin: 2,
+              color: '#e2e9ff',
+              textStyle: {
+                fontSize: 12,
+              },
+            },
+          },
+        ],
+        yAxis: [
+          {
+            type: 'value',
+            axisTick: {
+              show: false,
+            },
+            axisLabel: {
+              formatter: '{value}',
+              color: '#e2e9ff',
+            },
+            axisLine: {
+              show: false,
+              lineStyle: {
+                color: 'rgba(255,255,255,1)',
+              },
+            },
+            splitLine: {
+              show: false,
+              lineStyle: {
+                color: 'rgba(255,255,255,0.12)',
+              },
+            },
+          },
+        ],
+        series: [
+          {
+            type: 'bar',
+            data: [4016, 3230, 3790, 3570, 5470, 2860, 4530, 3710, 3180, 3260],
+            barWidth: '40px',
+            color: {
+              type: 'linear',
+              x: 0,
+              y: 0,
+              x2: 0,
+              y2: 1,
+              colorStops: [
+                {
+                  offset: 0,
+                  color: 'rgba(55, 242, 255, 0.5)', // 0% 处的颜色
+                },
+                {
+                  offset: 1,
+                  color: 'rgba(55, 242, 255, 0)', // 100% 处的颜色
+                },
+              ],
+              global: false, // 缺省为 false
+            },
+            label: {
+              normal: {
+                show: true,
+                lineHeight: 30,
+                width: 80,
+                height: 30,
+                backgroundColor: 'rgba(0,160,221,0.1)',
+                borderRadius: 200,
+                position: ['-10', '-24'],
+                distance: 1,
+                formatter: '{d|●}' + '{c} ',
+                rich: {
+                  d: {
+                    color: '#3CDDCF',
+                  },
+                  a: {
+                    color: '#fff',
+                    align: 'center',
+                  },
+                },
+              },
+            },
           },
         ],
       },

@@ -1,7 +1,11 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-11 09:32:18
- * @LastEditTime: 2021-06-15 09:25:14
+<<<<<<< HEAD
+ * @LastEditTime: 2021-06-17 08:24:10
+=======
+ * @LastEditTime: 2021-06-15 21:48:15
+>>>>>>> 17cc308dcb36e9375bf70cd47a08288fffa24593
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -54,6 +58,7 @@ export default {
   bottom: 0;
   z-index: 2;
   width: 46%;
+  height: 80px;
   padding: 4px;
   position: fixed;
   user-select: none;
@@ -70,7 +75,10 @@ export default {
   }
 
   .NavigationBar-inner {
+    position: absolute;
     width: 100%;
+    bottom: 10px;
+
     display: flex;
     align-items: center;
     color: $themeWhiteColoe;
@@ -82,24 +90,24 @@ export default {
     font-weight: 800;
     overflow: hidden;
     display: block;
-    transition: all 0.1s;
+    transition: all 0.42s ease-out;
     &.router-link-active {
       color: $themeWhiteColoe;
       font-size: 16px;
       .active {
-        width: 42px;
-        height: 42px;
+        width: 84px;
+        height: 84px;
         display: flex;
         align-items: center;
         justify-content: center;
-        background: linear-gradient($themeColoe, $themeColoe) left top,
-          linear-gradient($themeColoe, rgb(145, 145, 185)) left top,
-          linear-gradient($themeColoe, $themeColoe) right top,
-          linear-gradient($themeColoe, $themeColoe) right top,
-          linear-gradient($themeColoe, $themeColoe) left bottom,
-          linear-gradient($themeColoe, $themeColoe) left bottom,
-          linear-gradient($themeColoe, $themeColoe) right bottom,
-          linear-gradient($themeColoe, $themeColoe) right bottom;
+        background: linear-gradient($themeWhiteColoe, $themeWhiteColoe) left top,
+          linear-gradient($themeWhiteColoe, rgb(145, 145, 185)) left top,
+          linear-gradient($themeWhiteColoe, $themeWhiteColoe) right top,
+          linear-gradient($themeWhiteColoe, $themeWhiteColoe) right top,
+          linear-gradient($themeWhiteColoe, $themeWhiteColoe) left bottom,
+          linear-gradient($themeWhiteColoe, $themeWhiteColoe) left bottom,
+          linear-gradient($themeWhiteColoe, $themeWhiteColoe) right bottom,
+          linear-gradient($themeWhiteColoe, $themeWhiteColoe) right bottom;
         background-repeat: no-repeat;
         background-size: 1px 10px, 10px 1px;
       }

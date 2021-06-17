@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-11 09:22:01
- * @LastEditTime: 2021-06-15 09:18:04
+ * @LastEditTime: 2021-06-15 21:44:01
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -49,12 +49,13 @@ export default {
   top: 40px;
   bottom: 20px;
   z-index: 10;
-  height: 100%;
+  height: 90%;
   padding: 10px;
   position: fixed;
   overflow-y: auto;
   overflow-x: hidden;
   width: $map-sider-bar-width;
   transition: all 0.66s ease-out;
+  background: $base-black-gradient;
 }
 </style>
