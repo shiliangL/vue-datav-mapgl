@@ -11,6 +11,7 @@
     "@vue/composition-api": "^1.0.0-rc.11",
     "amfe-flexible": "^2.2.1",
     "core-js": "^3.6.5",
+    "countup.js": "^2.0.4",
     "echarts": "^5.1.2",
     "normalize.css": "7.0.0",
     "vue": "^2.6.11",

@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-11 11:20:24
- * @LastEditTime: 2021-06-17 10:17:35
+ * @LastEditTime: 2021-06-18 11:18:23
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -12,13 +12,10 @@
       class="header-title"
       v-text="title"
     ></h1>
-    <NumberRoll v-if="0"></NumberRoll>
   </div>
 </template>
 
 <script>
-
-import NumberRoll from '../NumberRoll/index.vue';
 
 export default {
   name: 'HeaderBar',
@@ -29,7 +26,6 @@ export default {
     },
   },
   components: {
-    NumberRoll,
   },
 };
 </script>

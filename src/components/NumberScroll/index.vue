@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-11 08:51:53
- * @LastEditTime: 2021-06-18 10:49:03
+ * @LastEditTime: 2021-06-18 11:33:53
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -68,7 +68,7 @@ export default {
           decimal: '.',
           prefix: '',
           suffix: '',
-          duration: 10,
+          duration: 4,
           decimalPlaces: 0,
           easingFn: (t, b, c, d) => {
             // eslint-disable-next-line no-param-reassign
@@ -88,22 +88,28 @@ export default {
 </script>
 <style scoped lang='scss'>
 .chartNum {
+  display: inline-block;
   position: relative;
   .CountUpTarget {
-    top: 0;
-    left: 18px;
-    line-height: 40px;
+    top: 50%;
+    left: 20px;
+    font-size: 20px;
+    font-weight: 400;
     text-align: right;
+    user-select: none;
     position: absolute;
-    letter-spacing: 32px;
+    letter-spacing: 38px;
+    color: $themeWhiteColoe;
+    transform: translate(0%, -50%);
   }
   .border {
     display: flex;
     align-items: center;
     .countUpTarget-item {
       margin: 4px;
-      width: 30px;
-      height: 40px;
+      width: 40px;
+      height: 48px;
+      border-radius: 3px;
       border: 1px solid $themeColoe;
     }
   }

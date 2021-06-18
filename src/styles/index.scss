@@ -37,6 +37,16 @@ a:hover {
     text-decoration: none;
 }
 
+.remix {
+    font-size: 28px;
+    color: $themeColoe;
+    fill: $themeColoe;
+}
+
+.text-center {
+    text-align: center;
+    justify-content: center;
+}
 
 .flex-box {
     display: flex;

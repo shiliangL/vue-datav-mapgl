@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-17 09:41:54
- * @LastEditTime: 2021-06-17 09:44:51
+ * @LastEditTime: 2021-06-18 08:53:33
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -34,13 +34,13 @@ export default {
 
 <style scoped lang="scss">
 .BorderBox {
-  padding: 20px;
+  padding: 10px;
   position: relative;
-  background: rgba(10, 11, 26, 0.8);
+  background: $base-black-gradient;
   .tl {
     width: 31px;
     height: 31px;
-    border: 2px solid rgba(92, 88, 221, 1);
+    border: 1px solid $themeColoe;
     border-right: 0;
     border-bottom: 0;
     position: absolute;
@@ -50,8 +50,7 @@ export default {
   .tr {
     width: 14px;
     height: 14px;
-    border: 2px solid rgba(92, 88, 221, 1);
-    opacity: 1;
+    border: 1px solid $themeColoe;
     border-left: 0;
     border-bottom: 0;
     position: absolute;
@@ -61,8 +60,7 @@ export default {
   .bl {
     width: 14px;
     height: 14px;
-    border: 2px solid rgba(92, 88, 221, 1);
-    opacity: 1;
+    border: 1px solid $themeColoe;
     border-right: 0;
     border-top: 0;
     position: absolute;
@@ -72,7 +70,7 @@ export default {
   .br {
     width: 31px;
     height: 31px;
-    border: 2px solid rgba(92, 88, 221, 1);
+    border: 1px solid $themeColoe;
     border-left: 0;
     border-top: 0;
     position: absolute;
@@ -81,7 +79,7 @@ export default {
   }
   .title {
     font-size: 20px;
-    color: #a8adc9;
+    color:$themeWhiteColoe;
   }
 }
 </style>
