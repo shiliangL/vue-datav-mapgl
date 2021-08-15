@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-05-21 11:21:03
- * @LastEditTime: 2021-06-12 22:51:19
+ * @LastEditTime: 2021-08-15 17:34:52
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -25,41 +25,41 @@
 <script>
 
 // eslint-disable-next-line import/extensions
-import { isExternal } from '@/utils/index.js';
+import { isExternal } from '@/utils/index.js'
 
 export default {
   name: 'SvgIcon',
   props: {
     iconClass: {
       type: String,
-      required: true,
+      required: true
     },
     className: {
       type: String,
-      default: '',
-    },
+      default: ''
+    }
   },
   computed: {
     isExternal() {
-      return isExternal(this.iconClass);
+      return isExternal(this.iconClass)
     },
     iconName() {
-      return `#icon-${this.iconClass}`;
+      return `#icon-${this.iconClass}`
     },
     svgClass() {
       if (this.className) {
-        return `svg-icon ${this.className}`;
+        return `svg-icon ${this.className}`
       }
-      return 'svg-icon';
+      return 'svg-icon'
     },
     styleExternalIcon() {
       return {
         mask: `url(${this.iconClass}) no-repeat 50% 50%`,
-        '-webkit-mask': `url(${this.iconClass}) no-repeat 50% 50%`,
-      };
-    },
-  },
-};
+        '-webkit-mask': `url(${this.iconClass}) no-repeat 50% 50%`
+      }
+    }
+  }
+}
 </script>
 
 <style scoped>

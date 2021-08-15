@@ -1,30 +1,30 @@
 /*
  * @Author: shiliangL
  * @Date: 2021-06-10 17:23:35
- * @LastEditTime: 2021-06-10 17:46:20
+ * @LastEditTime: 2021-08-15 17:48:00
  * @LastEditors: Do not edit
  * @Description:
  */
-const path = require('path');
-const px2rem = require('postcss-px2rem');
-const setting = require('./src/setting');
+const path = require('path')
+const px2rem = require('postcss-px2rem')
+const setting = require('./src/setting')
 
 // 引入等比适配插件
 
 // 配置基本大小
 const postcss = px2rem({
   // 基准大小 baseSize，需要和rem.js中相同
-  remUnit: setting.baseSize,
-});
+  remUnit: setting.baseSize
+})
 
 // 是否为生产环境
-const isProduction = process.env.NODE_ENV !== 'development';
+const isProduction = process.env.NODE_ENV !== 'development'
 
 function resolve(dir) {
-  return path.join(__dirname, dir);
+  return path.join(__dirname, dir)
 }
 
-const port = process.env.port || process.env.npm_config_port || 8090;
+const port = process.env.port || process.env.npm_config_port || 8090
 
 module.exports = {
   publicPath: '/',
@@ -38,8 +38,8 @@ module.exports = {
     open: true,
     overlay: {
       warnings: false,
-      errors: true,
-    },
+      errors: true
+    }
     // proxy: {
     //   '/': {
     //     target: 'http://119.136.32.106:48028/yanshi.ljfl',
@@ -56,14 +56,14 @@ module.exports = {
   },
   chainWebpack(config) {
     if (isProduction) {
-      config.plugins.delete('preload'); // TODO: need test
-      config.plugins.delete('prefetch'); // TODO: need test
+      config.plugins.delete('preload') // TODO: need test
+      config.plugins.delete('prefetch') // TODO: need test
     }
     // set svg-sprite-loader
     config.module
       .rule('svg')
       .exclude.add(resolve('src/icons'))
-      .end();
+      .end()
     config.module
       .rule('icons')
       .test(/\.svg$/)
@@ -72,20 +72,20 @@ module.exports = {
       .use('svg-sprite-loader')
       .loader('svg-sprite-loader')
       .options({
-        symbolId: 'icon-[name]',
+        symbolId: 'icon-[name]'
       })
-      .end();
+      .end()
   },
   css: {
     loaderOptions: {
       sass: {
-        prependData: '@import "@/styles/variables.scss";',
+        prependData: `@import "@/styles/variables.scss";`
       },
       postcss: {
         plugins: [
-          postcss,
-        ],
-      },
-    },
-  },
-};
+          postcss
+        ]
+      }
+    }
+  }
+}
