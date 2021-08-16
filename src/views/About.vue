@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-08-15 16:59:07
- * @LastEditTime: 2021-08-15 18:11:51
+ * @LastEditTime: 2021-08-16 21:16:10
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -31,6 +31,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.about,
 #home_map_container_id {
   width: 100%;
   height: 100%;

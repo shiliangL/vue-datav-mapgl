@@ -33,7 +33,7 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx"
-  ],
+, "src/utils/BMapGLClass.ts", "src/utils/BMapGLClass.js"  ],
   "exclude": [
     "node_modules"
   ]
