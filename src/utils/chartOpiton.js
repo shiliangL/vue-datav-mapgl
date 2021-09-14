@@ -1,7 +1,7 @@
 /*
  * @Author: shiliangL
  * @Date: 2021-06-12 23:05:45
- * @LastEditTime: 2021-09-17 18:33:14
+ * @LastEditTime: 2021-09-12 00:02:56
  * @LastEditors: Do not edit
  * @Description:
  */
@@ -291,8 +291,8 @@ export const FeedbackOptions = (params) => ({
   backgroundColor: 'transparent',
   title: {
     text: `${params.number}%`,
-    left: '45%',
-    top: '40%',
+    left: 'middle',
+    top: 'middle',
     textAlign: 'center',
     textStyle: {
       fontSize: 20,
@@ -375,8 +375,7 @@ export const RadarOption = (params) => ({
     radius: '70%',
     name: {
       formatter(name) {
-        let arr;
-        arr = [`{a|${name}}`];
+        const arr = [`{a|${name}}`];
         return arr.join('\n');
       },
       textStyle: {

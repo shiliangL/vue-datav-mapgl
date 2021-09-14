@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-09 13:39:57
- * @LastEditTime: 2021-09-17 16:30:59
+ * @LastEditTime: 2021-09-12 00:34:00
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -17,6 +17,7 @@
 <script>
 
 import darkStyle from '@/utils/mapCubeStyle';
+import GpsTracePlayer from '@/utils/GpsTracePlayer';
 import components from '../components/index';
 
 const { BMapGL, mapvgl } = window;
@@ -46,6 +47,91 @@ export default {
         });
         setTimeout(() => {
           // this.mapViewAnimation(this.map);
+          // this.initGpsTrace();
+          const view = new mapvgl.View({
+            map: this.map,
+          });
+
+          fetch('/mock/chinalocation.json').then((rs) => rs.json()).then((rs) => {
+            const data1 = [];
+            const data2 = [];
+            const data3 = [];
+            // eslint-disable-next-line no-plusplus
+            for (let i = 0; i < rs[0].length; i++) {
+              const { geoCoord } = rs[0][i];
+              data1.push({
+                geometry: {
+                  type: 'Point',
+                  coordinates: geoCoord,
+                },
+                properties: {
+                  time: Math.random() * 1000,
+                },
+              });
+            }
+            // eslint-disable-next-line no-plusplus
+            for (let i = 0; i < rs[1].length; i++) {
+              const { geoCoord } = rs[1][i];
+              data2.push({
+                geometry: {
+                  type: 'Point',
+                  coordinates: geoCoord,
+                },
+                properties: {
+                  time: Math.random() * 1000,
+                },
+              });
+            }
+            // eslint-disable-next-line no-plusplus
+            for (let i = 0; i < rs[2].length; i++) {
+              const { geoCoord } = rs[2][i];
+              data3.push({
+                geometry: {
+                  type: 'Point',
+                  coordinates: geoCoord,
+                },
+                properties: {
+                  time: Math.random() * 1000,
+                },
+              });
+            }
+
+            view.addLayer(new mapvgl.PointLayer({
+              blend: 'lighter',
+              shape: 'circle',
+              color: 'rgba(255, 77, 77, 0.8)', // 点图层1颜色
+              data: data1,
+              size: 2,
+            }));
+
+            view.addLayer(new mapvgl.PointLayer({
+              blend: 'lighter',
+              shape: 'circle',
+              color: 'rgba(255, 204, 0, 0.6)', // 点图层2颜色
+              data: data2,
+              size: 2,
+            }));
+
+            view.addLayer(new mapvgl.PointLayer({
+              blend: 'lighter',
+              shape: 'circle',
+              color: 'rgba(255, 255, 0, 0.6)', // 点图层3颜色
+              data: data3,
+              size: 2,
+            }));
+
+            view.addLayer(new mapvgl.PointTripLayer({
+              blend: 'lighter',
+              shape: 'circle',
+              startTime: 0,
+              endTime: 100,
+              step: 0.1,
+              trailLength: 10,
+              color: 'rgba(255, 255, 153, 0.5)', // 点动画图层颜色
+              data: data1,
+              size: 2,
+            }));
+          });
         }, 500);
       }
     });
@@ -56,7 +142,7 @@ export default {
       const map = new BMapGL.Map(domID, {
         style: { styleJson: darkStyle },
       });
-      map.setMinZoom(minZoom);
+      // map.setMinZoom(minZoom);
       map.centerAndZoom(centerName, 12);
       map.enableScrollWheelZoom();
       map.disableDoubleClickZoom();
@@ -223,6 +309,36 @@ export default {
       view.addLayer(pointLayer);
       // 可视化图层设置数据
       pointLayer.setData(list);
+    },
+    // 初始化播放轨迹
+    initGpsTrace() {
+      this.gpsPlayer = new GpsTracePlayer(this.map, {
+        requestUrl: '/gpsTrace/getGpsTrace',
+        stopPlayTips: () => {
+
+        },
+        playingHandler: () => {
+        },
+        playPauseHandler: () => {
+        },
+        playStopHandler: () => {
+          this.status = 0;
+        },
+        errorHandler: (error) => {
+          this.$message(error);
+        },
+        noPointHandler: () => {
+          this.status = 0;
+          console.log('该时间段内没有查找到轨迹。');
+        },
+        afterMovePositionHandler: () => {
+
+        },
+        requestDataSuccessHandler: () => {
+
+        },
+      });
+      this.gpsPlayer.start();
     },
   },
 };

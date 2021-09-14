@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-11 09:32:18
- * @LastEditTime: 2021-09-17 16:15:27
+ * @LastEditTime: 2021-09-12 00:01:46
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -53,7 +53,7 @@ export default {
   left: 50%;
   bottom: 0;
   z-index: 2;
-  width: 46%;
+  width: 20%;
   height: 80px;
   padding: 4px;
   position: fixed;
