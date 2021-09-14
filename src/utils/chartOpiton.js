@@ -1,10 +1,12 @@
 /*
  * @Author: shiliangL
  * @Date: 2021-06-12 23:05:45
- * @LastEditTime: 2021-09-12 00:02:56
+ * @LastEditTime: 2021-09-14 08:51:05
  * @LastEditors: Do not edit
  * @Description:
  */
+
+import echarts from 'echarts/lib/echarts';
 
 export const pieOption = () => ({
   backgroundColor: 'transparent',
@@ -445,4 +447,360 @@ export const RadarOption = (params) => ({
       },
     },
   ],
+});
+
+export const LineAssignmentLv = (params) => ({
+  backgroundColor: 'transparent',
+  title: {
+    show: false,
+  },
+  legend: {
+    show: true,
+    top: '5%',
+    textStyle: {
+      color: '#c0c9d2',
+    },
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      lineStyle: {
+        color: {
+          type: 'linear',
+          x: 0,
+          y: 0,
+          x2: 0,
+          y2: 1,
+          colorStops: [
+            {
+              offset: 0,
+              color: 'rgba(0, 255, 233,0)',
+            },
+            {
+              offset: 0.5,
+              color: 'rgba(255, 255, 255,1)',
+            },
+            {
+              offset: 1,
+              color: 'rgba(0, 255, 233,0)',
+            },
+          ],
+          global: false,
+        },
+      },
+    },
+  },
+  grid: {
+    top: '15%',
+    left: '10%',
+    right: '5%',
+    bottom: '10%',
+  },
+  xAxis: {
+    type: 'category',
+    axisLine: {
+      show: true,
+    },
+    splitArea: {
+      color: '#f00',
+      lineStyle: {
+        color: '#f00',
+      },
+    },
+    axisLabel: {
+      color: '#BCDCF0',
+    },
+    splitLine: {
+      show: false,
+    },
+    boundaryGap: false,
+    data: params.timeList,
+  },
+
+  yAxis: {
+    type: 'value',
+    min: 0,
+    splitLine: {
+      show: true,
+      lineStyle: {
+        color: 'rgba(255,255,255,0.1)',
+      },
+    },
+    axisLine: {
+      show: true,
+    },
+    axisLabel: {
+      show: true,
+      margin: 10,
+      textStyle: {
+        color: '#d1e6eb',
+      },
+    },
+    axisTick: {
+      show: false,
+    },
+  },
+  series: [
+    {
+      name: '出口流量',
+      type: 'line',
+      smooth: true, // 是否平滑
+      lineStyle: {
+        normal: {
+          color: '#00b3f4',
+          shadowColor: 'rgba(0, 0, 0, .3)',
+          shadowBlur: 0,
+          shadowOffsetY: 5,
+          shadowOffsetX: 5,
+        },
+      },
+      label: {
+        show: false,
+        position: 'top',
+        textStyle: {
+          color: '#00b3f4',
+        },
+      },
+      // 去除点标记
+      symbolSize: 0,
+      // 鼠标放上去还是要有颜色的
+      itemStyle: {
+        color: '#00b3f4',
+      },
+      // 渐变颜色
+      color: {
+        type: 'linear',
+        x: 0,
+        y: 0,
+        x2: 0,
+        y2: 1,
+        colorStops: [
+          {
+            offset: 0,
+            color: 'rgba(0,179,244,0.3)',
+          },
+          {
+            offset: 1,
+            color: 'rgba(0,179,244,0)',
+          },
+        ],
+        shadowColor: 'rgba(0,179,244, 0.9)',
+        shadowBlur: 20,
+      },
+      data: params.outData,
+    },
+    {
+      name: '入口流量',
+      type: 'line',
+      smooth: true, // 是否平滑
+      // 阴影
+      lineStyle: {
+        normal: {
+          color: '#00ca95',
+          shadowColor: 'rgba(0, 0, 0, .3)',
+          shadowBlur: 0,
+          shadowOffsetY: 5,
+          shadowOffsetX: 5,
+        },
+      },
+      label: {
+        show: false,
+        position: 'top',
+        textStyle: {
+          color: '#00ca95',
+        },
+      },
+      // 去除点标记
+      symbolSize: 0,
+      itemStyle: {
+        color: '#00ca95',
+      },
+      color: {
+        type: 'linear',
+        x: 0,
+        y: 0,
+        x2: 0,
+        y2: 1,
+        colorStops: [
+          {
+            offset: 0,
+            color: 'rgba(0,202,149,0.3)',
+          },
+          {
+            offset: 1,
+            color: 'rgba(0,202,149,0)',
+          },
+        ],
+        shadowColor: 'rgba(0,179,244, 0.9)',
+        shadowBlur: 20,
+      },
+      data: params.inData,
+    },
+  ],
+});
+
+export const OfflinePortalOptions = (params) => ({
+  backgroundColor: 'transparent',
+  color: ['#73A0FA', '#73DEB3', '#32C5E9', '#67E0E3'],
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'cross',
+      crossStyle: {
+        color: '#999',
+      },
+      lineStyle: {
+        type: 'dashed',
+      },
+    },
+  },
+  grid: {
+    left: '15',
+    right: '15',
+    bottom: '0',
+    top: '30',
+    containLabel: true,
+  },
+  legend: {
+    data: ['门店1', '门店2', '门店3', '门店4'],
+    show: true,
+    textStyle: {
+      color: '#BCDCFF',
+    },
+  },
+  xAxis: [
+    {
+      type: 'category',
+      data: params.xData,
+      axisLabel: {
+        color: '#BCDCF0',
+        textStyle: {
+          fontSize: 12,
+        },
+      },
+      splitLine: {
+        show: false,
+      },
+      axisTick: {
+        show: true,
+      },
+      axisLine: {
+        show: false,
+      },
+      boundaryGap: true,
+    },
+    {
+      type: 'category',
+      axisLabel: {
+        color: '#BCDCF0',
+        textStyle: {
+          fontSize: 12,
+        },
+      },
+      splitLine: {
+        show: false,
+      },
+      axisTick: {
+        show: true,
+      },
+      axisLine: {
+        show: false,
+      },
+      boundaryGap: true,
+    },
+  ],
+  yAxis: [
+    {
+      type: 'value',
+      name: '单位/人',
+      nameTextStyle: {
+        color: '#BCDCFF',
+      },
+      axisLabel: {
+        color: '#BCDCF0',
+        textStyle: {
+          fontSize: 12,
+        },
+      },
+      splitLine: {
+        show: true,
+        lineStyle: {
+          color: '#252938',
+        },
+      },
+      axisTick: {
+        show: true,
+      },
+      axisLine: {
+        show: true,
+      },
+    },
+    {
+      type: 'value',
+      min: 0,
+      max: 100,
+      interval: 20,
+      name: '密度',
+      // 网格样式
+      splitLine: {
+        show: false,
+      },
+      axisLine: {
+        lineStyle: {
+          color: '#94b5ca',
+        },
+      },
+    },
+  ],
+  series: [
+    {
+      name: '门店1',
+      type: 'line',
+      data: params.data1,
+    },
+    {
+      name: '门店2',
+      type: 'line',
+      data: params.data2,
+    },
+    {
+      name: '门店3',
+      type: 'line',
+      data: params.data3,
+    },
+    {
+      name: '门店4',
+      type: 'line',
+      data: params.data4,
+    },
+    {
+      name: '额度',
+      type: 'bar',
+      data: params.barData,
+      color: {
+        type: 'linear',
+        x: 0,
+        y: 0,
+        x2: 0,
+        y2: 1,
+        colorStops: [
+          {
+            offset: 0,
+            color: 'rgba(55, 242, 255, 0.5)', // 0% 处的颜色
+          },
+          {
+            offset: 1,
+            color: 'rgba(55, 242, 255, 0)', // 100% 处的颜色
+          },
+        ],
+        global: false, // 缺省为 false
+      },
+      barMaxWidth: 15,
+    },
+  ],
+});
+
+export const userOptions = (params = {}) => ({
+  header: params.header,
+  data: params.data,
 });
