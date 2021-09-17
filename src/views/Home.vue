@@ -1,13 +1,13 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-09 13:39:57
- * @LastEditTime: 2021-06-17 10:06:43
+ * @LastEditTime: 2021-09-17 16:01:53
  * @LastEditors: Do not edit
  * @Description:
 -->
 <template>
   <div class="layout">
-    <header-bar />
+    <header-bar title="智慧城市数据平台" />
     <div id="home" />
     <navigation-bar />
     <router-view class="transitionRouter" />
@@ -16,7 +16,7 @@
 
 <script>
 
-import darkStyle from '@/utils/mapStyle';
+import darkStyle from '@/utils/mapCubeStyle';
 import components from '../components/index';
 
 const { BMapGL, mapvgl } = window;
@@ -24,9 +24,13 @@ const { BMapGL, mapvgl } = window;
 export default {
   name: 'Home',
   components: {
-    // SelectBar: components.SelectBar,
     HeaderBar: components.HeaderBar,
     NavigationBar: components.NavigationBar,
+  },
+  data() {
+    return {
+      mapTilt: 0,
+    };
   },
   mounted() {
     this.$nextTick().then(() => {
@@ -40,29 +44,28 @@ export default {
           strokeWeight: 2,
           strokeOpacity: 1,
         });
-        this.initDarw();
+        setTimeout(() => {
+          this.mapViewAnimation(this.map);
+        }, 500);
       }
-    });
-    fetch('/static/mock.json', {
-      method: 'get',
-    }).then((data) => data.json()).then((result) => {
-      // eslint-disable-next-line no-console
-      console.log(result);
     });
   },
   methods: {
-    initMap(domID, centerPoint, minZoom = 12) {
+    initMap(domID, centerName, minZoom = 12) {
       // eslint-disable-next-line no-undef
       const map = new BMapGL.Map(domID, {
         style: { styleJson: darkStyle },
       });
-      map.centerAndZoom(centerPoint, 12);
-      map.enableScrollWheelZoom();
-      map.enableDragging();
-      map.disableDoubleClickZoom();
       map.setMinZoom(minZoom);
+      map.centerAndZoom(centerName, 12);
+      map.enableScrollWheelZoom();
+      map.disableDoubleClickZoom();
+      map.enableDragging();
       map.setHeading(0);
-      map.setTilt(45);
+      map.setTilt(32);
+      map.setDisplayOptions({ poiText: false });
+      map.setDisplayOptions({ poiIcon: false });
+      map.setDisplayOptions({ skyColors: ['rgba(200, 54, 54, 0)', 'rgba(200, 54, 54, 0)'] });
       return map;
     },
     // 自定义边界绘制
@@ -84,6 +87,108 @@ export default {
           points = points.concat(path);
         });
       });
+    },
+    mapViewAnimation(map) {
+      const opts = {
+        duration: 36000,
+        delay: 5000,
+        interation: 1 || 'INFINITE',
+      };
+      const keyFrames = [
+        {
+          center: new BMapGL.Point(116.307092, 40.054922),
+          zoom: 20,
+          tilt: 50,
+          heading: 0,
+          percentage: 0,
+        },
+        {
+          center: new BMapGL.Point(116.307631, 40.055391),
+          zoom: 21,
+          tilt: 70,
+          heading: 0,
+          percentage: 0.1,
+        },
+        {
+          center: new BMapGL.Point(116.306858, 40.057887),
+          zoom: 21,
+          tilt: 70,
+          heading: 0,
+          percentage: 0.25,
+        },
+        {
+          center: new BMapGL.Point(116.306858, 40.057887),
+          zoom: 21,
+          tilt: 70,
+          heading: -90,
+          percentage: 0.35,
+        },
+        {
+          center: new BMapGL.Point(116.307904, 40.058118),
+          zoom: 21,
+          tilt: 70,
+          heading: -90,
+          percentage: 0.45,
+        },
+        {
+          center: new BMapGL.Point(116.307904, 40.058118),
+          zoom: 21,
+          tilt: 70,
+          heading: -180,
+          percentage: 0.55,
+        },
+        {
+          center: new BMapGL.Point(116.308902, 40.055954),
+          zoom: 21,
+          tilt: 70,
+          heading: -180,
+          percentage: 0.75,
+        },
+        {
+          center: new BMapGL.Point(116.308902, 40.055954),
+          zoom: 21,
+          tilt: 70,
+          heading: -270,
+          percentage: 0.85,
+        },
+        {
+          center: new BMapGL.Point(116.307779, 40.055754),
+          zoom: 21,
+          tilt: 70,
+          heading: -360,
+          percentage: 0.95,
+        },
+        {
+          center: new BMapGL.Point(116.307092, 40.054922),
+          zoom: 20,
+          tilt: 50,
+          heading: -360,
+          percentage: 1,
+        },
+      ];
+      // eslint-disable-next-line no-restricted-syntax
+      for (const item of keyFrames) {
+        const marker = new BMapGL.Marker(item.center);
+        map.addOverlay(marker);
+      }
+      // 声明动画对象
+      const animation = new BMapGL.ViewAnimation(keyFrames, opts);
+      // 监听事件
+      animation.addEventListener('animationstart', (e) => {
+        // eslint-disable-next-line no-console
+        console.log(e, 'start');
+      });
+      animation.addEventListener('animationiterations', (e) => {
+        // eslint-disable-next-line no-console
+        console.log(e, 'onanimationiterations');
+      });
+      animation.addEventListener('animationend', (e) => {
+        // eslint-disable-next-line no-console
+        console.log(e, 'end');
+        map.cancelViewAnimation(animation);
+      });
+      // 开始播放动画
+      map.startViewAnimation(animation);
     },
     initDarw() {
       const list = [];

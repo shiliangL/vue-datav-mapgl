@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-11 08:51:53
- * @LastEditTime: 2021-06-12 10:58:58
+ * @LastEditTime: 2021-09-17 15:11:11
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -48,7 +48,7 @@ export default {
   background: transparent;
   background-image: $base-theme-gradient;
   &.round {
-    border-radius: 22px 0 0 0;
+    border-radius: 0 0 0 0;
   }
   &::after {
     content: "";

@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-11 09:22:01
- * @LastEditTime: 2021-06-18 11:10:34
+ * @LastEditTime: 2021-09-17 16:13:31
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -49,8 +49,8 @@ export default {
   top: 40px;
   bottom: 20px;
   z-index: 10;
+  padding: 0;
   height: 90%;
-  padding: 10px;
   position: fixed;
   overflow-y: auto;
   overflow-x: hidden;
