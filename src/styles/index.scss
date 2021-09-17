@@ -93,3 +93,74 @@ a:hover {
         }
     }
 }
+
+
+// 卡片
+.cube-card-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: space-between;
+    justify-content: space-around;
+    width: 100%;
+
+    &-item-column {
+        flex: 1;
+        height: 120px;
+        display: flex;
+        text-align: center;
+        flex-direction: column;
+    }
+
+    &-item {
+        display: flex;
+        align-items: center;
+        position: relative;
+        width: 46%;
+        padding: 4px;
+        border-radius: 4px;
+        margin-bottom: 4px;
+        border: 1px solid #343f4b;
+        // background-color: rgba(19, 25, 47, 0.66);
+        img {
+            width: 40px;
+            height: 40px;
+            margin-right: 4px;
+        }
+
+        .detail-item-text {
+            .h3 {
+                color: #bcdcff;
+                font-size: 10px;
+            }
+
+            span {
+                font-weight: bolder;
+                background: linear-gradient(to bottom, #fff, #4db6e5);
+                color: transparent;
+                -webkit-background-clip: text;
+                background-clip: text;
+            }
+
+            .number {
+                font-weight: 500px;
+                font-size: 14px;
+            }
+
+            .unit {
+                font-size: 10px;
+                padding-left: 4px;
+            }
+        }
+    }
+}
+
+
+// 渐变文字
+.cube-span {
+    font-weight: bolder;
+    background: linear-gradient(to bottom, #fff, #4db6e5);
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}

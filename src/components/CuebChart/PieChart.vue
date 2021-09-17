@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-12 16:39:50
- * @LastEditTime: 2021-09-17 15:08:58
+ * @LastEditTime: 2021-09-17 18:40:19
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -18,13 +18,20 @@
 import { use } from 'echarts/core';
 import VChart, { THEME_KEY } from 'vue-echarts';
 import { CanvasRenderer } from 'echarts/renderers';
-import { LineChart, BarChart, PieChart } from 'echarts/charts';
-import { TooltipComponent, LegendComponent, GridComponent } from 'echarts/components';
+import {
+  LineChart, BarChart, PieChart, RadarChart,
+} from 'echarts/charts';
+import {
+  TooltipComponent, LegendComponent, GridComponent, TitleComponent, RadarComponent,
+} from 'echarts/components';
 
 use([
   PieChart,
   BarChart,
   LineChart,
+  RadarChart,
+  RadarComponent,
+  TitleComponent,
   CanvasRenderer,
   GridComponent,
   TooltipComponent,

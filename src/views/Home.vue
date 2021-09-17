@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-09 13:39:57
- * @LastEditTime: 2021-09-17 16:01:53
+ * @LastEditTime: 2021-09-17 16:30:59
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -45,7 +45,7 @@ export default {
           strokeOpacity: 1,
         });
         setTimeout(() => {
-          this.mapViewAnimation(this.map);
+          // this.mapViewAnimation(this.map);
         }, 500);
       }
     });
