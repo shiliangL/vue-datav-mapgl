@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-09 13:39:57
- * @LastEditTime: 2021-09-12 00:34:00
+ * @LastEditTime: 2021-09-19 00:21:48
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -9,6 +9,7 @@
   <div class="layout">
     <header-bar title="智慧城市数据平台" />
     <div id="home" />
+    <cube-time></cube-time>
     <navigation-bar />
     <router-view class="transitionRouter" />
   </div>
@@ -25,6 +26,7 @@ const { BMapGL, mapvgl } = window;
 export default {
   name: 'Home',
   components: {
+    CubeTime: components.CubeTime,
     HeaderBar: components.HeaderBar,
     NavigationBar: components.NavigationBar,
   },
@@ -142,7 +144,7 @@ export default {
       const map = new BMapGL.Map(domID, {
         style: { styleJson: darkStyle },
       });
-      // map.setMinZoom(minZoom);
+      map.setMinZoom(minZoom);
       map.centerAndZoom(centerName, 12);
       map.enableScrollWheelZoom();
       map.disableDoubleClickZoom();

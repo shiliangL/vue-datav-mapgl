@@ -1,13 +1,19 @@
 /*
  * @Author: shiliangL
  * @Date: 2021-06-10 17:23:35
- * @LastEditTime: 2021-06-17 08:50:00
+ * @LastEditTime: 2021-09-17 09:58:33
  * @LastEditors: Do not edit
  * @Description:
  */
 const path = require('path');
 const px2rem = require('postcss-px2rem');
+const dayjs = require('dayjs');
 const setting = require('./src/setting');
+
+// moment
+const time = dayjs().format('YYYY.MM.DD HH:mm:ss');
+
+process.env.VUE_APP_BUILD_TIME = time;
 
 // 引入等比适配插件
 
