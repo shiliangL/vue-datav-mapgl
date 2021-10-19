@@ -1,12 +1,10 @@
 /*
  * @Author: shiliangL
  * @Date: 2021-06-12 23:05:45
- * @LastEditTime: 2021-09-14 08:51:05
+ * @LastEditTime: 2021-10-19 09:18:29
  * @LastEditors: Do not edit
  * @Description:
  */
-
-import echarts from 'echarts/lib/echarts';
 
 export const pieOption = () => ({
   backgroundColor: 'transparent',
@@ -90,7 +88,7 @@ export const lineOption = () => ({
       axisLabel: {
         textStyle: {
           color: '#FFFFFF',
-          fontSize: 12,
+          fontSize: '90%',
         },
       },
       axisTick: {
@@ -121,7 +119,7 @@ export const lineOption = () => ({
         show: true,
         textStyle: {
           color: 'rgba(255, 255, 255, 0.5)',
-          fontSize: 12,
+          fontSize: '90%',
         },
       },
     },
@@ -209,7 +207,7 @@ export const barOption = () => ({
         margin: 2,
         color: '#e2e9ff',
         textStyle: {
-          fontSize: 12,
+          fontSize: '90%',
         },
       },
     },
@@ -297,7 +295,7 @@ export const FeedbackOptions = (params) => ({
     top: 'middle',
     textAlign: 'center',
     textStyle: {
-      fontSize: 20,
+      fontSize: '90%',
       fontWeight: '500',
       color: '#909dff',
       textAlign: 'center',
@@ -385,7 +383,7 @@ export const RadarOption = (params) => ({
           // 根据文字的组设置格式
           a: {
             color: '#BCDCFF',
-            fontSize: 14,
+            fontSize: '90%',
             fontWeight: 600,
             fontFamily: 'Source Han Sans CN',
           },
@@ -675,7 +673,7 @@ export const OfflinePortalOptions = (params) => ({
       axisLabel: {
         color: '#BCDCF0',
         textStyle: {
-          fontSize: 12,
+          fontSize: '90%',
         },
       },
       splitLine: {
@@ -694,7 +692,7 @@ export const OfflinePortalOptions = (params) => ({
       axisLabel: {
         color: '#BCDCF0',
         textStyle: {
-          fontSize: 12,
+          fontSize: '90%',
         },
       },
       splitLine: {
@@ -719,7 +717,7 @@ export const OfflinePortalOptions = (params) => ({
       axisLabel: {
         color: '#BCDCF0',
         textStyle: {
-          fontSize: 12,
+          fontSize: '90%',
         },
       },
       splitLine: {
