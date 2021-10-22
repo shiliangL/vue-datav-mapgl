@@ -228,7 +228,7 @@ export const barOption = () => ({
         margin: 2,
         color: '#e2e9ff',
         textStyle: {
-          fontSize: 12,
+          fontSize: '90%',
         },
       },
     },
@@ -413,7 +413,7 @@ export const RadarOption = (params) => ({
           // 根据文字的组设置格式
           a: {
             color: '#BCDCFF',
-            fontSize: 14,
+            fontSize: '90%',
             fontWeight: 600,
             fontFamily: 'Source Han Sans CN',
           },
@@ -703,7 +703,7 @@ export const OfflinePortalOptions = (params) => ({
       axisLabel: {
         color: '#BCDCF0',
         textStyle: {
-          fontSize: 12,
+          fontSize: '90%',
         },
       },
       splitLine: {
@@ -722,7 +722,7 @@ export const OfflinePortalOptions = (params) => ({
       axisLabel: {
         color: '#BCDCF0',
         textStyle: {
-          fontSize: 12,
+          fontSize: '90%',
         },
       },
       splitLine: {
@@ -747,7 +747,7 @@ export const OfflinePortalOptions = (params) => ({
       axisLabel: {
         color: '#BCDCF0',
         textStyle: {
-          fontSize: 12,
+          fontSize: '90%',
         },
       },
       splitLine: {

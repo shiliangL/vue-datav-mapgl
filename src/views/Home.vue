@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-09 13:39:57
- * @LastEditTime: 2021-10-13 23:26:01
+ * @LastEditTime: 2021-10-22 21:14:45
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -9,6 +9,7 @@
   <div class="layout">
     <header-bar title="智慧城市数据平台" />
     <div id="home" />
+    <cube-time></cube-time>
     <navigation-bar />
     <router-view class="transitionRouter" />
   </div>
@@ -27,6 +28,7 @@ const { BMapGL, mapvgl } = window;
 export default {
   name: 'Home',
   components: {
+    CubeTime: components.CubeTime,
     HeaderBar: components.HeaderBar,
     NavigationBar: components.NavigationBar,
   },
