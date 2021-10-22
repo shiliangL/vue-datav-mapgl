@@ -1,36 +1,14 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-11 20:35:17
- * @LastEditTime: 2021-06-12 09:07:03
+ * @LastEditTime: 2021-10-22 21:13:17
  * @LastEditors: Do not edit
  * @Description: 
 -->
-# vue-datav-gl
+### 企业级数据可视化大屏
 
-## Project setup
-```
-npm install
-```
+![image.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b7277a25e7b74f018c7db488507cfec0~tplv-k3u1fbpfcp-watermark.image?)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+<!-- ### api接口
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
-
-### api接口
-
-https://interface.sina.cn/news/wap/fymap2020_data.d.json
+https://interface.sina.cn/news/wap/fymap2020_data.d.json -->

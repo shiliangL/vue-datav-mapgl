@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-05-21 11:21:03
- * @LastEditTime: 2021-06-17 08:54:12
+ * @LastEditTime: 2021-10-10 07:33:46
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -69,7 +69,7 @@ export default {
   height: 60px;
   fill: currentColor;
   overflow: hidden;
-  vertical-align: -0.15em;
+  /* vertical-align: -0.15em; */
 }
 
 .svg-external-icon {

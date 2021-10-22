@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-11 09:32:18
- * @LastEditTime: 2021-09-12 00:01:46
+ * @LastEditTime: 2021-10-22 20:51:23
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -35,10 +35,10 @@ export default {
   data() {
     return {
       navigationList: [
+        { iconClass: 'earlyWarning', text: '安全预警', url: '/earlyWarning' },
         { iconClass: 'thePeopleWarning', text: '人员预警', url: '/thePeopleWarning' },
         { iconClass: 'theVehicleWarning', text: '车辆预警', url: '/theVehicleWarning' },
         { iconClass: 'safetyWarning', text: '综合监控', url: '/safetyWarning' },
-        { iconClass: 'earlyWarning', text: '安全预警', url: '/earlyWarning' },
       ],
     };
   },

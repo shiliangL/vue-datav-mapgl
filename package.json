@@ -13,6 +13,7 @@
     "core-js": "^3.6.5",
     "countup.js": "^2.0.4",
     "echarts": "^5.1.2",
+    "mapbox-gl": "^2.5.1",
     "normalize.css": "7.0.0",
     "vue": "^2.6.11",
     "vue-echarts": "^6.0.0-rc.6",
@@ -52,8 +53,7 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {
-    }
+    "rules": {}
   },
   "browserslist": [
     "> 1%",

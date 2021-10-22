@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-11 09:22:01
- * @LastEditTime: 2021-09-17 16:13:31
+ * @LastEditTime: 2021-10-09 19:58:19
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -54,7 +54,8 @@ export default {
   position: fixed;
   overflow-y: auto;
   overflow-x: hidden;
-  width: $map-sider-bar-width;
+  width: 20%;
+  // width: $map-sider-bar-width;
   transition: all 0.66s ease-out;
   background: $base-black-gradient;
 }

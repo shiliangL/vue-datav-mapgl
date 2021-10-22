@@ -1,12 +1,11 @@
 /*
  * @Author: shiliangL
  * @Date: 2021-06-12 23:05:45
- * @LastEditTime: 2021-09-14 08:51:05
+ * @LastEditTime: 2021-10-22 21:07:21
  * @LastEditors: Do not edit
  * @Description:
  */
-
-import echarts from 'echarts/lib/echarts';
+import { px2rem } from '@/utils/rem';
 
 export const pieOption = () => ({
   backgroundColor: 'transparent',
@@ -17,6 +16,12 @@ export const pieOption = () => ({
   legend: {
     left: 'center',
     data: ['Direct', 'Email', 'Ad Networks', 'Video Ads', 'Search Engines'],
+    itemWidth: px2rem(25),
+    itemHeight: px2rem(14),
+    textStyle: {
+      color: 'rgba(255, 255, 255, 0.5)',
+      fontSize: px2rem(12),
+    },
   },
   series: [
     {
@@ -69,6 +74,13 @@ export const lineOption = () => ({
     borderWidth: 1,
     borderColor: '#00F5FF',
   },
+  legend: {
+    left: 'center',
+    textStyle: {
+      color: 'rgba(255, 255, 255, 0.5)',
+      fontSize: px2rem(12),
+    },
+  },
   grid: {
     top: '10%',
     left: '0%',
@@ -90,7 +102,7 @@ export const lineOption = () => ({
       axisLabel: {
         textStyle: {
           color: '#FFFFFF',
-          fontSize: 12,
+          fontSize: px2rem(12),
         },
       },
       axisTick: {
@@ -121,7 +133,7 @@ export const lineOption = () => ({
         show: true,
         textStyle: {
           color: 'rgba(255, 255, 255, 0.5)',
-          fontSize: 12,
+          fontSize: px2rem(12),
         },
       },
     },
@@ -177,6 +189,13 @@ export const barOption = () => ({
       type: 'shadow',
     },
   },
+  legend: {
+    left: 'center',
+    textStyle: {
+      color: 'rgba(255, 255, 255, 0.5)',
+      fontSize: px2rem(12),
+    },
+  },
   grid: {
     show: false,
     top: '2%',
@@ -188,16 +207,16 @@ export const barOption = () => ({
     {
       type: 'category',
       data: [
-        '姑苏区',
-        '虎丘区',
-        '吴中区',
-        '相城区',
-        '吴江区',
-        '常熟市',
-        '张家港市',
-        '昆山市',
-        '太仓市',
-        '工业园区',
+        '南山区',
+        '罗湖区',
+        '宝安区',
+        '南山区',
+        '龙岗区',
+        '光明区',
+        '盐田区',
+        '龙华区',
+        '福田区',
+        '坪山区',
       ],
       axisLine: {
         show: false,
@@ -297,12 +316,19 @@ export const FeedbackOptions = (params) => ({
     top: 'middle',
     textAlign: 'center',
     textStyle: {
-      fontSize: 20,
+      fontSize: px2rem(20),
       fontWeight: '500',
       color: '#909dff',
       textAlign: 'center',
     },
   },
+  // legend: {
+  //   left: 'center',
+  //   textStyle: {
+  //     color: params.color || 'rgba(255, 255, 255, 0.5)',
+  //     fontSize: px2rem(12),
+  //   },
+  // },
   series: [
     {
       type: 'pie',
@@ -318,11 +344,13 @@ export const FeedbackOptions = (params) => ({
         colorStops: [
           {
             offset: 0,
-            color: '#5a8bfa', // 0% 处的颜色
+            color: params.color1 || 'rgba(255, 255, 255, 0.5)',
+            // color: '#5a8bfa', // 0% 处的颜色
           },
           {
             offset: 1,
-            color: '#831bdb',
+            color: params.color2 || 'rgba(255, 255, 255, 0.5)',
+            // color: '#831bdb',
           },
         ],
         shadowBlur: 10,

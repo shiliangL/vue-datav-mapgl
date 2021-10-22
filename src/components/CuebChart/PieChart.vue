@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-12 16:39:50
- * @LastEditTime: 2021-09-17 18:40:19
+ * @LastEditTime: 2021-10-10 08:13:32
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -15,6 +15,7 @@
 
 <script>
 
+import { px2rem } from '@/utils/rem';
 import { use } from 'echarts/core';
 import VChart, { THEME_KEY } from 'vue-echarts';
 import { CanvasRenderer } from 'echarts/renderers';
@@ -134,7 +135,7 @@ export default {
             axisLabel: {
               textStyle: {
                 color: '#FFFFFF',
-                fontSize: 12,
+                fontSize: px2rem(12),
               },
             },
             axisTick: {
@@ -165,7 +166,7 @@ export default {
               show: true,
               textStyle: {
                 color: 'rgba(255, 255, 255, 0.5)',
-                fontSize: 12,
+                fontSize: px2rem(12),
               },
             },
           },
@@ -252,7 +253,7 @@ export default {
               margin: 2,
               color: '#e2e9ff',
               textStyle: {
-                fontSize: 12,
+                fontSize: px2rem(12),
               },
             },
           },
@@ -266,6 +267,9 @@ export default {
             axisLabel: {
               formatter: '{value}',
               color: '#e2e9ff',
+              textStyle: {
+                fontSize: px2rem(12),
+              },
             },
             axisLine: {
               show: false,

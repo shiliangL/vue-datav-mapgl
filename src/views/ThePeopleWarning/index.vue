@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-11 13:45:53
- * @LastEditTime: 2021-06-18 13:41:39
+ * @LastEditTime: 2021-10-09 22:59:47
  * @LastEditors: Do not edit
  * @Description: 人员安全预警监控 ThePeopleWarning
  -->
@@ -59,7 +59,6 @@
     </MapSiderBar>
     <div class="map-center-Bar">
       <!-- <div class="title"> 监测人数数量 </div> -->
-      <NumberScroll :number="carNumber"></NumberScroll>
     </div>
     <MapSiderBar placement="right">
       <TitleBar title="实时统计">
@@ -156,7 +155,6 @@ export default {
     PieChart,
     VueScroll,
     TitleBar: components.TitleBar,
-    NumberScroll: components.NumberScroll,
     MapSiderBar: components.MapSiderBar,
   },
   computed: {
@@ -217,6 +215,7 @@ export default {
   margin: 6px 0;
   overflow: hidden;
   .scroll-content {
+    font-size: 12px;
     .scroll-content-item {
       padding: 6px;
     }

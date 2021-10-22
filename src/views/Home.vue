@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-09 13:39:57
- * @LastEditTime: 2021-09-12 00:34:00
+ * @LastEditTime: 2021-10-13 23:26:01
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -16,6 +16,8 @@
 
 <script>
 
+import mapboxgl from 'mapbox-gl';
+import setting from '@/setting';
 import darkStyle from '@/utils/mapCubeStyle';
 import GpsTracePlayer from '@/utils/GpsTracePlayer';
 import components from '../components/index';
@@ -31,10 +33,48 @@ export default {
   data() {
     return {
       mapTilt: 0,
+      mapTypeStyle: setting.mapStyle,
     };
   },
   mounted() {
     this.$nextTick().then(() => {
+      // eslint-disable-next-line no-unused-expressions
+      this.mapTypeStyle === 'baidu' ? this.initBaiduMap() : this.initMapBox();
+    });
+  },
+  methods: {
+    initMap(domID, centerName, minZoom = 12) {
+      // eslint-disable-next-line no-undef
+      const map = new BMapGL.Map(domID, {
+        style: { styleJson: darkStyle },
+      });
+      map.setMinZoom(minZoom);
+      map.centerAndZoom(centerName, 12);
+      map.enableScrollWheelZoom();
+      map.disableDoubleClickZoom();
+      map.enableDragging();
+      map.setHeading(0);
+      map.setTilt(32);
+      map.setDisplayOptions({ poiText: false });
+      map.setDisplayOptions({ poiIcon: false });
+      map.setDisplayOptions({ skyColors: ['rgba(200, 54, 54, 0)', 'rgba(200, 54, 54, 0)'] });
+      return map;
+    },
+    initMapBox() {
+      mapboxgl.accessToken = 'pk.eyJ1IjoicGxheS1pc2FhYyIsImEiOiJjazU0cDkzbWowamd2M2dtemd4bW9mbzRhIn0.cxD4Fw3ZPB_taMkyUSFENA';
+      const map = new mapboxgl.Map({
+        container: 'home', // container id 绑定的组件的id
+        // style: 'mapbox://styles/mapbox/streets-v11', // 地图样式，可以使用官网预定义的样式,也可以自定义
+        style: 'mapbox://styles/mapbox/outdoors-v9?optimize=true', // optimize=true
+        center: [118.726533, 32.012005], // 初始坐标系
+        zoom: 15, // starting zoom 地图初始的拉伸比例
+        pitch: 60, // 地图的角度，不写默认是0，取值是0-60度，一般在3D中使用
+        bearing: -17.6, // 地图的初始方向，值是北的逆时针度数，默认是0，即是正北
+        antialias: true, // 抗锯齿，通过false关闭提升性能
+      });
+      this.map = map;
+    },
+    initBaiduMap() {
       if (BMapGL) {
         this.map = this.initMap('home', '广东省深圳市', 12);
         this.generateDistrictBoundary(this.map, '广东省深圳市', {
@@ -48,6 +88,7 @@ export default {
         setTimeout(() => {
           // this.mapViewAnimation(this.map);
           // this.initGpsTrace();
+          if (this.map) return;
           const view = new mapvgl.View({
             map: this.map,
           });
@@ -132,27 +173,8 @@ export default {
               size: 2,
             }));
           });
-        }, 500);
+        }, 1200);
       }
-    });
-  },
-  methods: {
-    initMap(domID, centerName, minZoom = 12) {
-      // eslint-disable-next-line no-undef
-      const map = new BMapGL.Map(domID, {
-        style: { styleJson: darkStyle },
-      });
-      // map.setMinZoom(minZoom);
-      map.centerAndZoom(centerName, 12);
-      map.enableScrollWheelZoom();
-      map.disableDoubleClickZoom();
-      map.enableDragging();
-      map.setHeading(0);
-      map.setTilt(32);
-      map.setDisplayOptions({ poiText: false });
-      map.setDisplayOptions({ poiIcon: false });
-      map.setDisplayOptions({ skyColors: ['rgba(200, 54, 54, 0)', 'rgba(200, 54, 54, 0)'] });
-      return map;
     },
     // 自定义边界绘制
     generateBoundary(mapInstance, points, style) {
@@ -178,7 +200,7 @@ export default {
       const opts = {
         duration: 36000,
         delay: 5000,
-        interation: 1 || 'INFINITE',
+        interation: 'INFINITE' || 1,
       };
       const keyFrames = [
         {
@@ -253,10 +275,10 @@ export default {
         },
       ];
       // eslint-disable-next-line no-restricted-syntax
-      for (const item of keyFrames) {
-        const marker = new BMapGL.Marker(item.center);
-        map.addOverlay(marker);
-      }
+      // for (const item of keyFrames) {
+      //   const marker = new BMapGL.Marker(item.center);
+      //   map.addOverlay(marker);
+      // }
       // 声明动画对象
       const animation = new BMapGL.ViewAnimation(keyFrames, opts);
       // 监听事件
@@ -329,6 +351,7 @@ export default {
         },
         noPointHandler: () => {
           this.status = 0;
+          // eslint-disable-next-line no-console
           console.log('该时间段内没有查找到轨迹。');
         },
         afterMovePositionHandler: () => {

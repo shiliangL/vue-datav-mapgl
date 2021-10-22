@@ -1,14 +1,14 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-11 13:45:53
- * @LastEditTime: 2021-09-17 18:31:54
+ * @LastEditTime: 2021-10-22 21:08:36
  * @LastEditors: Do not edit
  * @Description: 预警告警处置 EarlyWarning
 -->
 <template>
   <div class="page-content">
     <MapSiderBar placement="left">
-      <TitleBar title="人员安全预警监控">
+      <TitleBar title="综合概况">
         <div class="cube-card-list">
           <div
             class='cube-card-list-item'
@@ -18,13 +18,15 @@
             <img :src="require(`@/assets/images/center-details-data${index + 1}.png`)" />
             <div class='detail-item-text'>
               <div class="h3">{{item.title}}</div>
-              <span class="number">{{item.number}}</span>
-              <span class='unit'>{{item.unit}}</span>
+              <div class="h50">
+                <span class="number">{{item.number}}</span>
+                <span class='unit'>{{item.unit}}</span>
+              </div>
             </div>
           </div>
         </div>
       </TitleBar>
-      <TitleBar title="人员概况">
+      <TitleBar title="服务体验">
         <div class="cube-card-list">
           <div
             class='cube-card-list-item-column'
@@ -32,11 +34,13 @@
             :key="index"
           >
             <PieChart :option="FeedbackOptions(item)" />
-            <span class='cube-span'>{{item.title}}</span>
+            <span
+              class='cube-span'
+            >{{item.title}}</span>
           </div>
         </div>
       </TitleBar>
-      <TitleBar title="人员分析">
+      <TitleBar title="事件占比">
         <PieChart :option="pieOption" />
       </TitleBar>
     </MapSiderBar>
@@ -112,14 +116,20 @@ export default {
       cubeCards,
       feedback: [
         {
+          color1: '#43CBFF',
+          color2: '#0396FF',
           title: '服务质量',
           number: 90,
         },
         {
+          color1: '#43CBFF',
+          color2: '#0396FF',
           title: '交互体验',
           number: 82,
         },
         {
+          color1: '#43CBFF',
+          color2: '#0396FF',
           title: '安全防护',
           number: 85,
         },
@@ -176,5 +186,8 @@ export default {
   .flex-box-item {
     text-align: center;
   }
+}
+.cube-card-list-item-column {
+  height: 180px;
 }
 </style>

@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-11 08:51:53
- * @LastEditTime: 2021-09-17 15:11:11
+ * @LastEditTime: 2021-10-10 07:47:09
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -41,11 +41,12 @@ export default {
   font-weight: 600;
   color: #bad6f1;
   height: 32px;
-  line-height: 32px;
-  padding-left: 12px;
+  padding-left: 10px;
   margin-bottom: 4px;
   position: relative;
   background: transparent;
+  display: flex;
+  align-items: center;
   background-image: $base-theme-gradient;
   &.round {
     border-radius: 0 0 0 0;

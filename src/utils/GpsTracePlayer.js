@@ -249,7 +249,9 @@ GpsTracePlayer.prototype.requestData = function (player) {
         // new 设置信息框内容
         player.__playMarkerLabel.setStyle({
           zIndex: 99999,
-          border: '1px solid rgb(19 169 106)',
+          border: '1px solid rgba(50, 97, 168, 1)',
+          background: 'linear-gradient(270deg, rgba(65, 139, 194, 0), rgba(65, 139, 194, .5))',
+          color: '#FFF',
           padding: '6px',
           borderRadius: '4px',
         });
@@ -300,23 +302,23 @@ GpsTracePlayer.prototype.createMarkerLabel = function (gpsPoint, type) {
     }
     if (type === 2) {
       text = `车牌：${
-        this.__name
+        this.__name || '粤B5566'
       }<br>`
         + `时间：${
-          gpsPoint.gpsDate
+          gpsPoint.gpsDate || ''
         }<br>`
         + `速度：${
           speed2
         }公里/小时<br>`;
     } else {
       text = `姓名：${
-        this.__name
+        this.__name || '张小'
       }<br>`
         + `时间：${
-          gpsPoint.gpsDate
+          gpsPoint.gpsDate || ''
         }<br>`
         + `速度：${
-          speed2
+          speed2 || ''
         }公里/小时<br>`;
     }
     return text;
