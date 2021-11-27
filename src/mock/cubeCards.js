@@ -1,19 +1,19 @@
 /*
  * @Author: shiliangL
  * @Date: 2021-08-27 13:43:07
- * @LastEditTime: 2021-09-17 16:51:40
+ * @LastEditTime: 2021-11-27 21:40:18
  * @LastEditors: Do not edit
  * @Description:
  */
 export default [
   {
     title: '图像转化流量',
-    number: 260,
+    number: 29960,
     unit: '点击/张',
   },
   {
     title: '视频转化流量',
-    number: 330,
+    number: 87730,
     unit: '点击/个',
   },
   {

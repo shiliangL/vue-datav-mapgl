@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-11 09:22:01
- * @LastEditTime: 2021-10-09 19:58:19
+ * @LastEditTime: 2021-11-27 00:42:46
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -46,8 +46,8 @@ export default {
 
 <style lang="scss" scoped>
 .map-sider-bar-item {
-  top: 40px;
-  bottom: 20px;
+  top: 50px;
+  bottom: 30px;
   z-index: 10;
   padding: 0;
   height: 90%;
@@ -57,6 +57,6 @@ export default {
   width: 20%;
   // width: $map-sider-bar-width;
   transition: all 0.66s ease-out;
-  background: $base-black-gradient;
+  // background: $base-black-gradient;
 }
 </style>

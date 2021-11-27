@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-11 13:45:53
- * @LastEditTime: 2021-10-09 22:59:47
+ * @LastEditTime: 2021-11-27 00:58:29
  * @LastEditors: Do not edit
  * @Description: 人员安全预警监控 ThePeopleWarning
  -->
@@ -146,7 +146,7 @@
 // eslint-disable-next-line import/named
 import components from '@/components/index';
 import PieChart from '@/components/CuebChart/PieChart.vue';
-import { lineOption, barOption } from '@/utils/chartOpiton';
+import { lineOption, barOption, liquidFill } from '@/utils/chartOpiton';
 import VueScroll from 'vue-seamless-scroll';
 
 export default {
@@ -175,7 +175,7 @@ export default {
     return {
       carNumber: 2321,
       lineOption: lineOption(),
-      barOption: barOption(),
+      barOption: liquidFill() || barOption(),
       scrollHeight: 230,
       listData: [
         { title: '第一行', date: '2017-12-16' },

@@ -5,7 +5,6 @@ $base-font-size-default: 14px;
 $base-font-size-big: 16px;
 $base-font-size-bigger: 18px;
 $base-font-size-max: 22px;
-
 // base color
 $themeColoe: #007aff;
 $themeWhiteColoe: #f6fafc;
@@ -21,10 +20,10 @@ $base-box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
 $base-black-gradient: linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, transparent);
 $base-theme-gradient: linear-gradient(270deg, rgba(65, 139, 194, 0), rgba(65, 139, 194, .5));
 $base-blue-gradient: linear-gradient(to right, rgba(50, 97, 168, 1), rgba(21, 31, 46, 0));
-$base-blue2-gradient: linear-gradient(180deg, rgba(135, 143, 166,0) , rgba(117, 123, 151, 0.78));
-
+$base-blue2-gradient: linear-gradient(180deg, rgba(135, 143, 166, 0), rgba(117, 123, 151, 0.78));
+$base-theme2-gradient: linear-gradient(230deg, rgba(65, 139, 194, 0), rgba(65, 139, 194, .22));
 // the :export directive is the magic sauce for webpack
 // https://www.bluematador.com/blog/how-to-share-variables-between-js-and-sass
 :export {
-  themeColoe: $themeColoe;
+    themeColoe: $themeColoe;
 }

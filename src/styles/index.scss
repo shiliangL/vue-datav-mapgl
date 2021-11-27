@@ -1,11 +1,10 @@
 @import './transition.scss';
-
 body {
     height: 100%;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    font-family: Orbitron,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+    font-family: Orbitron, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 html,
@@ -50,31 +49,25 @@ a:hover {
 .flex-box {
     display: flex;
     align-items: center;
-
     .flex-box-item {
         flex: 1;
     }
-
     .number {
         color: $themeWhiteColoe;
         font-weight: 400;
         font-size: 14px;
     }
-
     .title {
         font-size: 12Px;
     }
-
     .flex-box-item {
         padding: 2px 0;
     }
-
     .flex-box-line-row {
         flex: 1;
         display: flex;
         align-items: center;
     }
-
     // 线条渐变
     .flex-box-item-line {
         flex: 1;
@@ -82,17 +75,14 @@ a:hover {
         background: transparent;
         border: 1px transparent solid;
         border-image: $base-theme-gradient 1 4;
-
         &.flex-box {
             justify-content: space-around;
         }
-
         &:not(:last-child) {
             margin-bottom: 4px;
         }
     }
 }
-
 
 // 卡片
 .cube-card-list {
@@ -108,7 +98,6 @@ a:hover {
         text-align: center;
         flex-direction: column;
     }
-
     &-item {
         display: flex;
         align-items: center;
@@ -140,12 +129,10 @@ a:hover {
                 -webkit-background-clip: text;
                 background-clip: text;
             }
-
             .number {
                 font-weight: 500px;
                 font-size: 14px;
             }
-
             .unit {
                 font-size: 10px;
                 padding-left: 4px;
@@ -153,7 +140,6 @@ a:hover {
         }
     }
 }
-
 
 // 渐变文字
 .cube-span {
@@ -165,6 +151,40 @@ a:hover {
     background-clip: text;
 }
 
-.anchorBL{
+.anchorBL {
     display: none;
+}
+
+.clearfix:after {
+    content: '';
+    height: 0;
+    clear: both;
+    visibility: hidden;
+    display: block;
+}
+
+.mapboxgl-control-container,
+.mapboxgl-ctrl-bottom-right,
+.mapboxgl-ctrl-bottom-left {
+    display: none !important;
+}
+
+.container-3main-box {
+    display: grid;
+    height: 100%;
+    width: 100%;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 10px 0px;
+    grid-auto-flow: row;
+}
+
+.container-2main-box {
+    display: grid;
+    height: 100%;
+    width: 100%;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px 0px;
+    grid-auto-flow: row;
 }

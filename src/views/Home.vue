@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-09 13:39:57
- * @LastEditTime: 2021-10-22 21:14:45
+ * @LastEditTime: 2021-11-27 20:37:13
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -17,13 +17,8 @@
 
 <script>
 
-import mapboxgl from 'mapbox-gl';
 import setting from '@/setting';
-import darkStyle from '@/utils/mapCubeStyle';
-import GpsTracePlayer from '@/utils/GpsTracePlayer';
 import components from '../components/index';
-
-const { BMapGL, mapvgl } = window;
 
 export default {
   name: 'Home',
@@ -41,329 +36,168 @@ export default {
   mounted() {
     this.$nextTick().then(() => {
       // eslint-disable-next-line no-unused-expressions
-      this.mapTypeStyle === 'baidu' ? this.initBaiduMap() : this.initMapBox();
+      this.initMapboxgl();
     });
   },
   methods: {
-    initMap(domID, centerName, minZoom = 12) {
-      // eslint-disable-next-line no-undef
-      const map = new BMapGL.Map(domID, {
-        style: { styleJson: darkStyle },
+    initMapboxgl() {
+      const { mapboxgl } = window;
+      if (!mapboxgl) return;
+      mapboxgl.accessToken = 'pk.eyJ1Ijoic2hpbGlhbmdsIiwiYSI6ImNrdG5wbjdjODA1NGkzMW8zZ2w5b2xzNTgifQ.zO_1f362AFeSWsrmE6I-Ww';
+      this.map = new mapboxgl.Map({
+        container: this.$el.querySelector('#home'),
+        style: 'mapbox://styles/mapbox/dark-v10',
+        center: [114.185125079355, 22.6322002129776],
+        zoom: 10,
+        maxzoom: 10,
+        minzoom: 12,
+        pitch: 45,
       });
-      map.setMinZoom(minZoom);
-      map.centerAndZoom(centerName, 12);
-      map.enableScrollWheelZoom();
-      map.disableDoubleClickZoom();
-      map.enableDragging();
-      map.setHeading(0);
-      map.setTilt(32);
-      map.setDisplayOptions({ poiText: false });
-      map.setDisplayOptions({ poiIcon: false });
-      map.setDisplayOptions({ skyColors: ['rgba(200, 54, 54, 0)', 'rgba(200, 54, 54, 0)'] });
-      return map;
-    },
-    initMapBox() {
-      mapboxgl.accessToken = 'pk.eyJ1IjoicGxheS1pc2FhYyIsImEiOiJjazU0cDkzbWowamd2M2dtemd4bW9mbzRhIn0.cxD4Fw3ZPB_taMkyUSFENA';
-      const map = new mapboxgl.Map({
-        container: 'home', // container id 绑定的组件的id
-        // style: 'mapbox://styles/mapbox/streets-v11', // 地图样式，可以使用官网预定义的样式,也可以自定义
-        style: 'mapbox://styles/mapbox/outdoors-v9?optimize=true', // optimize=true
-        center: [118.726533, 32.012005], // 初始坐标系
-        zoom: 15, // starting zoom 地图初始的拉伸比例
-        pitch: 60, // 地图的角度，不写默认是0，取值是0-60度，一般在3D中使用
-        bearing: -17.6, // 地图的初始方向，值是北的逆时针度数，默认是0，即是正北
-        antialias: true, // 抗锯齿，通过false关闭提升性能
-      });
-      this.map = map;
-    },
-    initBaiduMap() {
-      if (BMapGL) {
-        this.map = this.initMap('home', '广东省深圳市', 12);
-        this.generateDistrictBoundary(this.map, '广东省深圳市', {
-          strokeStyle: 'solid',
-          strokeColor: '#6AC3EB',
-          fillColor: '#4b93ff',
-          fillOpacity: 0.1,
-          strokeWeight: 2,
-          strokeOpacity: 1,
-        });
-        setTimeout(() => {
-          // this.mapViewAnimation(this.map);
-          // this.initGpsTrace();
-          if (this.map) return;
-          const view = new mapvgl.View({
-            map: this.map,
-          });
-
-          fetch('/mock/chinalocation.json').then((rs) => rs.json()).then((rs) => {
-            const data1 = [];
-            const data2 = [];
-            const data3 = [];
-            // eslint-disable-next-line no-plusplus
-            for (let i = 0; i < rs[0].length; i++) {
-              const { geoCoord } = rs[0][i];
-              data1.push({
-                geometry: {
-                  type: 'Point',
-                  coordinates: geoCoord,
-                },
-                properties: {
-                  time: Math.random() * 1000,
-                },
-              });
-            }
-            // eslint-disable-next-line no-plusplus
-            for (let i = 0; i < rs[1].length; i++) {
-              const { geoCoord } = rs[1][i];
-              data2.push({
-                geometry: {
-                  type: 'Point',
-                  coordinates: geoCoord,
-                },
-                properties: {
-                  time: Math.random() * 1000,
-                },
-              });
-            }
-            // eslint-disable-next-line no-plusplus
-            for (let i = 0; i < rs[2].length; i++) {
-              const { geoCoord } = rs[2][i];
-              data3.push({
-                geometry: {
-                  type: 'Point',
-                  coordinates: geoCoord,
-                },
-                properties: {
-                  time: Math.random() * 1000,
-                },
-              });
-            }
-
-            view.addLayer(new mapvgl.PointLayer({
-              blend: 'lighter',
-              shape: 'circle',
-              color: 'rgba(255, 77, 77, 0.8)', // 点图层1颜色
-              data: data1,
-              size: 2,
-            }));
-
-            view.addLayer(new mapvgl.PointLayer({
-              blend: 'lighter',
-              shape: 'circle',
-              color: 'rgba(255, 204, 0, 0.6)', // 点图层2颜色
-              data: data2,
-              size: 2,
-            }));
-
-            view.addLayer(new mapvgl.PointLayer({
-              blend: 'lighter',
-              shape: 'circle',
-              color: 'rgba(255, 255, 0, 0.6)', // 点图层3颜色
-              data: data3,
-              size: 2,
-            }));
-
-            view.addLayer(new mapvgl.PointTripLayer({
-              blend: 'lighter',
-              shape: 'circle',
-              startTime: 0,
-              endTime: 100,
-              step: 0.1,
-              trailLength: 10,
-              color: 'rgba(255, 255, 153, 0.5)', // 点动画图层颜色
-              data: data1,
-              size: 2,
-            }));
-          });
-        }, 1200);
-      }
-    },
-    // 自定义边界绘制
-    generateBoundary(mapInstance, points, style) {
-      const polygon = new BMapGL.Polygon(points, style);
-      mapInstance.addOverlay(polygon);
-      return polygon;
-    },
-    // 行政区域边界绘制
-    generateDistrictBoundary(mapInstance, districtName, style) {
-      const bdary = new BMapGL.Boundary();
-      bdary.get(districtName, (res) => {
-        const { boundaries } = res;
-        let points = [];
-        // 区划会分为多块，所以需要遍历生成
-        boundaries.forEach((boundary) => {
-          const polygon = this.generateBoundary(mapInstance, boundary, style);
-          const path = polygon.getPath();
-          points = points.concat(path);
-        });
+      const { map } = this;
+      map.on('load', () => {
+        this.fetchLine(map);
+        this.initLayout(this.map);
       });
     },
-    mapViewAnimation(map) {
-      const opts = {
-        duration: 36000,
-        delay: 5000,
-        interation: 'INFINITE' || 1,
-      };
-      const keyFrames = [
-        {
-          center: new BMapGL.Point(116.307092, 40.054922),
-          zoom: 20,
-          tilt: 50,
-          heading: 0,
-          percentage: 0,
-        },
-        {
-          center: new BMapGL.Point(116.307631, 40.055391),
-          zoom: 21,
-          tilt: 70,
-          heading: 0,
-          percentage: 0.1,
-        },
-        {
-          center: new BMapGL.Point(116.306858, 40.057887),
-          zoom: 21,
-          tilt: 70,
-          heading: 0,
-          percentage: 0.25,
-        },
-        {
-          center: new BMapGL.Point(116.306858, 40.057887),
-          zoom: 21,
-          tilt: 70,
-          heading: -90,
-          percentage: 0.35,
-        },
-        {
-          center: new BMapGL.Point(116.307904, 40.058118),
-          zoom: 21,
-          tilt: 70,
-          heading: -90,
-          percentage: 0.45,
-        },
-        {
-          center: new BMapGL.Point(116.307904, 40.058118),
-          zoom: 21,
-          tilt: 70,
-          heading: -180,
-          percentage: 0.55,
-        },
-        {
-          center: new BMapGL.Point(116.308902, 40.055954),
-          zoom: 21,
-          tilt: 70,
-          heading: -180,
-          percentage: 0.75,
-        },
-        {
-          center: new BMapGL.Point(116.308902, 40.055954),
-          zoom: 21,
-          tilt: 70,
-          heading: -270,
-          percentage: 0.85,
-        },
-        {
-          center: new BMapGL.Point(116.307779, 40.055754),
-          zoom: 21,
-          tilt: 70,
-          heading: -360,
-          percentage: 0.95,
-        },
-        {
-          center: new BMapGL.Point(116.307092, 40.054922),
-          zoom: 20,
-          tilt: 50,
-          heading: -360,
-          percentage: 1,
-        },
-      ];
+    rotateCamera(timestamp) {
+      // eslint-disable-next-line no-shadow
+      const { map } = this;
+      // clamp the rotation between 0 -360 degrees
+      // Divide timestamp by 100 to slow rotation to ~10 degrees / sec
+      map.rotateTo((timestamp / 500) % 360, { duration: 0 });
+      // Request the next frame of the animation.
+      requestAnimationFrame(this.rotateCamera);
+    },
+    initLayout(map) {
+      const { layers } = map.getStyle();
       // eslint-disable-next-line no-restricted-syntax
-      // for (const item of keyFrames) {
-      //   const marker = new BMapGL.Marker(item.center);
-      //   map.addOverlay(marker);
-      // }
-      // 声明动画对象
-      const animation = new BMapGL.ViewAnimation(keyFrames, opts);
-      // 监听事件
-      animation.addEventListener('animationstart', (e) => {
-        // eslint-disable-next-line no-console
-        console.log(e, 'start');
+      for (const layer of layers) {
+        if (layer.type === 'symbol' && layer.layout['text-field']) {
+          map.removeLayer(layer.id);
+        }
+      }
+
+      map.addLayer({
+        id: '3d-buildings',
+        source: 'composite',
+        'source-layer': 'building',
+        filter: ['==', 'extrude', 'true'],
+        type: 'fill-extrusion',
+        minzoom: 12,
+        paint: {
+          'fill-extrusion-color': '#aaa',
+          // use an 'interpolate' expression to add a smooth transition effect to the
+          // buildings as the user zooms in
+          'fill-extrusion-height': [
+            'interpolate',
+            ['linear'],
+            ['zoom'],
+            15,
+            0,
+            15.05,
+            ['get', 'height'],
+          ],
+          'fill-extrusion-base': [
+            'interpolate',
+            ['linear'],
+            ['zoom'],
+            15,
+            0,
+            15.05,
+            ['get', 'min_height'],
+          ],
+          'fill-extrusion-opacity': 0.6,
+        },
       });
-      animation.addEventListener('animationiterations', (e) => {
-        // eslint-disable-next-line no-console
-        console.log(e, 'onanimationiterations');
-      });
-      animation.addEventListener('animationend', (e) => {
-        // eslint-disable-next-line no-console
-        console.log(e, 'end');
-        map.cancelViewAnimation(animation);
-      });
-      // 开始播放动画
-      map.startViewAnimation(animation);
     },
-    initDarw() {
-      const list = [];
-      let randomCount = 100;
-      // eslint-disable-next-line no-plusplus
-      while (randomCount--) {
-        const cityCenter = { lng: 113.936577, lat: 22.545518 };
-        const random = [cityCenter.lng + Math.random() * 0.4, cityCenter.lat + Math.random() * 0.4];
-        list.push({
-          geometry: {
-            type: 'Point',
-            coordinates: random,
-          },
-          properties: {
-            count: Math.random() * 40,
+    fetchLine(map) {
+      fetch('/mock/mapline.json', {
+        method: 'GET',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }).then((value) => value.json()).then((data) => {
+        // Add a data source containing GeoJSON data.
+        map.addSource('maine', {
+          type: 'geojson',
+          data,
+        });
+
+        const textPoints = {
+          type: 'FeatureCollection',
+          features: [],
+        };
+
+        data.features.forEach((item) => {
+          textPoints.features.push({
+            type: 'Feature',
+            properties: { ...item.properties },
+            geometry: {
+              type: 'Points',
+              coordinates: item.properties.center,
+            },
+          });
+        });
+
+        map.addSource('textPoints', {
+          type: 'geojson',
+          data: textPoints,
+        });
+
+        // this.map.addLayer({
+        //   id: 'textPoints',
+        //   type: 'symbol',
+        //   source: 'textPoints',
+        //   layout: {
+        //     // 'text-size': 20,
+        //   },
+        //   paint: {
+
+        //   },
+        // });
+
+        // Add a new layer to visualize the polygon.
+        map.addLayer({
+          id: 'maine',
+          type: 'fill',
+          source: 'maine', // reference the data source
+          layout: {},
+          paint: {
+            // 'fill-color': {
+            //   property: 'fillColor', // this will be your density property form you geojson
+            //   stops: [
+            //     [0, '#ffd0a6'],
+            //     [10, '#ffd0a6'],
+            //     [100, '#ffaa7f'],
+            //     [500, '#ff704e'],
+            //     [1000, '#f04040'],
+            //     [10000, '#b50a09'],
+            //   ],
+            // },
+            // 'fill-color': [
+            //   'match', ['get', 'fillColor'],
+            //   '1', '#cece23',
+            //   '2', '#c98c98',
+            //   '#ee34e6',
+            // ],
+            'fill-opacity': 0.66,
+            'fill-color': 'RGBA(39, 73, 126,0)', // blue color fill
+            // 'fill-opacity': 0.66,
           },
         });
-      }
-      // 创建 MapVGL图层
-      const view = new mapvgl.View({
-        map: this.map,
+        // Add a black outline around the polygon.
+        map.addLayer({
+          id: 'outline',
+          type: 'line',
+          source: 'maine',
+          layout: {},
+          paint: {
+            'line-color': 'RGBA(70, 242, 253, 1.00)',
+            'line-width': 1,
+          },
+        });
       });
-      // 创建 可视化图层
-      const pointLayer = new mapvgl.PointLayer({
-        blend: 'lighter',
-        size(item) {
-          return item.properties.count;
-        },
-        color: 'rgba(89, 0, 179,0.86)',
-      });
-      // 创建 MapVGL中Add可视化图层
-      view.addLayer(pointLayer);
-      // 可视化图层设置数据
-      pointLayer.setData(list);
-    },
-    // 初始化播放轨迹
-    initGpsTrace() {
-      this.gpsPlayer = new GpsTracePlayer(this.map, {
-        requestUrl: '/gpsTrace/getGpsTrace',
-        stopPlayTips: () => {
-
-        },
-        playingHandler: () => {
-        },
-        playPauseHandler: () => {
-        },
-        playStopHandler: () => {
-          this.status = 0;
-        },
-        errorHandler: (error) => {
-          this.$message(error);
-        },
-        noPointHandler: () => {
-          this.status = 0;
-          // eslint-disable-next-line no-console
-          console.log('该时间段内没有查找到轨迹。');
-        },
-        afterMovePositionHandler: () => {
-
-        },
-        requestDataSuccessHandler: () => {
-
-        },
-      });
-      this.gpsPlayer.start();
     },
   },
 };

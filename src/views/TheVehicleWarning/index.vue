@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-11 13:45:53
- * @LastEditTime: 2021-06-15 21:49:45
+ * @LastEditTime: 2021-11-27 18:54:34
  * @LastEditors: Do not edit
  * @Description: 车辆安全预警监控 TheVehicleWarning
 -->
@@ -99,7 +99,8 @@
         </div>
       </TitleBar>
       <TitleBar title="趋势统计">
-        <PieChart :option="barOption" />
+        <ScrollNumber :num="scrollNumber"></ScrollNumber>
+        <!-- <PieChart :option="barOption" /> -->
       </TitleBar>
     </MapSiderBar>
   </div>
@@ -116,17 +117,21 @@ export default {
   components: {
     PieChart,
     TitleBar: components.TitleBar,
+    ScrollNumber: components.ScrollNumber,
     MapSiderBar: components.MapSiderBar,
   },
   data() {
     return {
+      scrollNumber: 200,
       lineOption: lineOption(),
       barOption: barOption(),
     };
   },
   mounted() {
     this.$nextTick().then(() => {
-
+      setInterval(() => {
+        this.scrollNumber += 1;
+      }, 1200);
     });
   },
   methods: {

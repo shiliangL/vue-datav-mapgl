@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-12 16:39:50
- * @LastEditTime: 2021-10-10 08:13:32
+ * @LastEditTime: 2021-10-23 11:54:50
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -22,15 +22,19 @@ import { CanvasRenderer } from 'echarts/renderers';
 import {
   LineChart, BarChart, PieChart, RadarChart,
 } from 'echarts/charts';
+
 import {
-  TooltipComponent, LegendComponent, GridComponent, TitleComponent, RadarComponent,
+  TooltipComponent, LegendComponent, GridComponent, TitleComponent, RadarComponent, PolarComponent,
 } from 'echarts/components';
+
+import 'echarts-liquidfill';
 
 use([
   PieChart,
   BarChart,
   LineChart,
   RadarChart,
+  PolarComponent,
   RadarComponent,
   TitleComponent,
   CanvasRenderer,

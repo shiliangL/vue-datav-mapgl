@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-09-19 00:15:40
- * @LastEditTime: 2021-09-19 00:29:09
+ * @LastEditTime: 2021-11-27 00:46:28
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -60,10 +60,12 @@ export default {
   position: absolute;
   color: #daf6ff;
   font-family: "Share Tech Mono", monospace;
+  display: flex;
+  align-items: center;
   text-shadow: 0 0 20px #0aafe6, 0 0 20px rgba(10, 175, 230, 0);
   .time {
+    padding-left: 8px;
     margin: 0;
-    padding: 0;
     font-size: 14px;
     letter-spacing: 0.05em;
   }
