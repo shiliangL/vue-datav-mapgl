@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-09 13:39:57
- * @LastEditTime: 2021-11-27 20:37:13
+ * @LastEditTime: 2021-11-28 08:51:04
  * @LastEditors: Do not edit
  * @Description:
 -->
@@ -111,6 +111,7 @@ export default {
       });
     },
     fetchLine(map) {
+      this.InitLayer(map);
       fetch('/mock/mapline.json', {
         method: 'GET',
         mode: 'cors',
@@ -199,6 +200,171 @@ export default {
         });
       });
     },
+    /**
+ * 同一图层layer的不同要素feature设置不同的颜色
+ * InitLayer 构造函数
+ * mapbox初始化地图
+ */
+    InitLayer(map) {
+      this.map = map;
+      this.jsonPoints = {
+        type: 'FeatureCollection',
+        features: [],
+      };
+      this.jsonLine = {
+        type: 'FeatureCollection',
+        features: [],
+      };
+      this.jsonFill = {
+        type: 'FeatureCollection',
+        features: [],
+      };
+      this.addPointsLayer();
+      this.addLineLayer();
+      this.addFillLayer();
+    },
+    /**
+     * 添加点图层 paint是layer的一个属性，负责图层的渲染与呈现。
+     * match通常用于枚举型的字段渲染，如唯一值渲染。
+     * addPointLayer 方法名
+     */
+    addPointsLayer() {
+      this.jsonPoints.features.push(
+        {
+          type: 'Feature',
+          properties: {
+            id: 1, name: '张三', age: 23, color: 1,
+          },
+          geometry: {
+            type: 'Points',
+            coordinates: [121.6604, 31.3245],
+          },
+        },
+        {
+          type: 'Features',
+          properties: {
+            id: 2, name: '菜霸', age: 22, color: 2,
+          },
+          geometry: {
+            type: 'Points', // 点
+            coordinates: [121.647104, 31.332030],
+          },
+        },
+      );
+      this.map.addSource('points_', {
+        type: 'geojson',
+        data: this.jsonPoints,
+      });
+      this.map.addLayer({
+        id: 'points_',
+        type: 'circle',
+        source: 'points_',
+        paint: {
+          'circle-color': [
+            'match', ['get', 'color'],
+            '1', '#ff4895',
+            '2', '#ccff12',
+            '#cf45cf',
+          ],
+          'circle-radius': 5,
+          'circle-stroke-width': 2,
+        },
+
+      });
+    },
+    addLineLayer() {
+      this.jsonLine.features.push(
+        {
+          type: 'Feature',
+          properties: {
+            id: 3, name: '王六', age: 23, lineColor: 1,
+          },
+          geometry: {
+            type: 'LineString',
+            coordinates: [[121.6604, 31.3245], [121.66232, 31.3256], [121.66456, 31.327834], [121.6712324, 31.332312]],
+          },
+        },
+        {
+          type: 'Feature',
+          properties: {
+            id: 4, name: '小李', age: 23, lineColor: 2,
+          },
+          geometry: {
+            type: 'LineString', // 线
+            coordinates: [[122.6604, 32.3245], [122.66232, 32.3256], [122.66456, 32.3278], [122.6712324, 32.332312]],
+          },
+        },
+      );
+      this.map.addSource('line_', {
+        type: 'geojson',
+        data: this.jsonLine,
+      });
+      this.map.addLayer({
+        id: 'line_',
+        type: 'line',
+        source: 'line_',
+        // 描边
+        layout: {
+          'line-cap': 'round',
+          'line-join': 'round',
+        },
+        paint: {
+          'line-color': [
+            'match'['get', 'lineColor'],
+            '1', '#cece23',
+            '2', '#c98c98',
+            '#ee34e6',
+          ],
+          'line-width': 2,
+          'line-opacity': 0.5,
+          'line-dasharray': [1, 2],
+        },
+      });
+    },
+    addFillLayer() {
+      this.jsonFill.features.push(
+        {
+          type: 'Feature',
+          properties: {
+            id: 5, name: '小八', age: 23, fillColor: 1,
+          },
+          geometry: {
+            type: 'Polygon', // 面
+            coordinates: [[[121.6604, 31.3245], [121.66232, 31.3256], [121.66456, 31.327834], [121.6712324, 31.332312]]],
+          },
+        },
+        {
+          type: 'Feature',
+          properties: {
+            id: 6, name: '小五', age: 23, fillColor: 2,
+          },
+          geometry: {
+            type: 'Polygon', // 面
+            coordinates: [[[122.6604, 32.3245], [122.66232, 32.3256], [122.66456, 32.3278], [122.6712324, 32.332312]]],
+          },
+        },
+      );
+      this.map.addSource('fill_', {
+        type: 'geojson',
+        data: this.jsonFill,
+      });
+      this.map.addLayer({
+        id: 'fill_',
+        type: 'fill',
+        source: 'fill_',
+        layout: {},
+        paint: {
+          'fill-color': [
+            'match', ['get', 'fillColor'],
+            '1', '#cece23',
+            '2', '#c98c98',
+            '#ee34e6',
+          ],
+          'fill-opacity': 0.5,
+        },
+      });
+    },
+
   },
 };
 </script>

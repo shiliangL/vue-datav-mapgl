@@ -1,7 +1,7 @@
 <!--
  * @Author: shiliangL
  * @Date: 2021-06-11 13:45:53
- * @LastEditTime: 2021-11-27 21:43:46
+ * @LastEditTime: 2021-11-27 21:50:11
  * @LastEditors: Do not edit
  * @Description: 预警告警处置 EarlyWarning
 -->
@@ -31,7 +31,7 @@
           <PieChart :option="lineOption" />
         </TitleBar>
         <TitleBar title="实现预警">
-          <vue-scroll
+          <div
             :style="{height: scrollHeight + 'px' }"
             :data="listData"
             :class-option="defaultOption"
@@ -67,7 +67,7 @@
                 />
               </div>
             </div>
-          </vue-scroll>
+          </div>
         </TitleBar>
       </div>
     </MapSiderBar>
@@ -260,7 +260,6 @@ export default {
   display: flex;
   align-items: center;
 }
-
 
 .cube-card-list-item-column {
   overflow-y: auto;
